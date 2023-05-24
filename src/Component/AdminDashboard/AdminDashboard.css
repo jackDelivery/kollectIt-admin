@@ -1,0 +1,8 @@
+.css-13crup0>*:not(style)~*:not(style) {
+    /* margin-top: 0.5rem; */
+    /* -webkit-margin-end: 0px; */
+    /* margin-inline-end: 0px; */
+    /* margin-bottom: 0px; */
+    -webkit-margin-start: 0px;
+    margin-inline-start: 0px;
+}

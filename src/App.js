@@ -7,12 +7,29 @@ import axios from 'axios';
 import { StoreProvider } from './ContextApi';
 import Login from './Pages/Login/Login';
 import { Url } from './Pages/Core';
+import chakraTheme from "@chakra-ui/theme";
+import CashierDashboard from './Component/CashierDashboard/CashierDashboard';
+import {
+  ChakraBaseProvider,
+  extendBaseTheme,
+  RadioButtonGroup,
+  Text,
+} from "@chakra-ui/react";
+
+const { Button } = chakraTheme.components;
+
+const theme = extendBaseTheme({
+  components: {
+    Button,
+  },
+});
 
 
 
 function App() {
 
   const [Role, setRole] = useState([])
+  const [UserData, setUserData] = useState([])
   // console.log(Role, "Rollll");
   // useEffect(() => {
   //   axios({
@@ -25,22 +42,27 @@ function App() {
   //   })
   // }, [])
 
-
+  const theme = extendBaseTheme({
+    components: {
+      Button,
+    },
+  });
+  
   return (
     <div>
-
-      <StoreProvider value={{ Role, setRole }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/" element={<Login />} />
-            {/* <Route path="/clientdata" element={<ClientData />} />
+      <ChakraBaseProvider theme={theme}>
+        <StoreProvider value={{ Role, setRole, UserData, setUserData  }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/" element={<Login />} />
+              {/* <Route path="/clientdata" element={<ClientData />} />
             <Route path="/paymentdata" element={<PaymentData />} />
             <Route path="/csvfileupload" element={<CsvfileUpload />} /> */}
-          </Routes>
-        </BrowserRouter>
-      </StoreProvider >
-
+            </Routes>
+          </BrowserRouter>
+        </StoreProvider >
+      </ChakraBaseProvider>
     </div>
   );
 }

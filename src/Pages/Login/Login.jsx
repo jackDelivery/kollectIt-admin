@@ -5,7 +5,8 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import StoreContext from '../../ContextApi';
 import { useNavigate } from "react-router-dom";
 import { Url } from "../Core/index";
-import Kicon from '../../Component/assets/K-icon.png'
+import Kicon from '../../Component/assets/K-icon.png';
+
 
 function simulateNetworkRequest() { //
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -45,7 +46,7 @@ function Login() { // login funcation
       localStorage.setItem("Role", JSON.stringify(res.data.Role))
       alert("Login Successfully!")
       navigate('/dashboard');
-
+      RoleDetails.setUserData(res.data)
     }).catch((err) => {
       console.log(err, "employee not found");
     })

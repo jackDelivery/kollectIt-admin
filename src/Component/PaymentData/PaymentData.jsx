@@ -11,9 +11,16 @@ import { Url } from '../../Pages/Core';
 
 export default function PaymentData() {
 
-    const [allData, setallData] = useState([])
-    const [Imagelink, setImagelink] = useState([])
+    const [allData, setallData] = useState([]);
+    const [realTime, setRealTime] = useState(true);
+    const [ObjId, setObjId] = useState("");
+    const [OnData, setOnData] = useState("");
+    // const [DueOn, setDueOn] = useState("");
+    // const [DownOn, setDownOn] = useState("");
+    const [Imagelink, setImagelink] = useState([]);
 
+    let drawOnref = useRef();
+    let dueOnref = useRef();
 
     useEffect(() => {
         axios({
@@ -23,7 +30,7 @@ export default function PaymentData() {
             // console.log(response.data,"response")
             setallData(response.data.Data)
         })
-    }, [])
+    }, [realTime])
 
     console.log(allData, "allData");
 
@@ -48,9 +55,37 @@ export default function PaymentData() {
 
     function creatID(e) {
         console.log(e, "Ee");
-        setImagelink(e.imageUrl)
+        // setImagelink(e.imageUrl)
+        // setObjId(e._id)
+        setOnData(e)
+
     }
-    console.log(Imagelink);
+    console.log(OnData.imageUrl,"rrrrr");
+    function handler(params) {
+        console.log(dueOnref.current.value);
+
+        axios({
+            method: "put",
+            url: Url + "/UpdateFilteredPayments",
+            data: {
+                "filter": {
+                    "_id":  OnData.ObjId
+                },
+                "update": {
+                    "drawOn": drawOnref.current.value,
+                    "dueOn": dueOnref.current.value
+                }
+            }
+        }).then((res) => {
+            console.log(res.data, "response");
+            setRealTime(!realTime);
+        }).catch((error) => [
+            console.log(error, "error")
+        ])
+
+
+    }
+
     return (
         <div>
 
@@ -60,9 +95,9 @@ export default function PaymentData() {
                 <tr class="header">
                     <th>Verify.Code</th>
                     <th>Name</th>
-                    <th>Number</th>
-                    <th>Email</th>
-                    <th>Amount</th>
+                    <th>Draw On</th>
+                    <th>Payment Status</th>
+                    <th>Due On</th>
                     <th>Image</th>
                     <th>Staus</th>
                     <th>Action</th>
@@ -72,9 +107,9 @@ export default function PaymentData() {
                         <tr>
                             <td className='text-center'>{v.VerificationCode}</td>
                             <td>{v.PaymentName}</td>
-                            <td>{v.PaymentNumber}</td>
-                            <td>{v.PaymentEmail}</td>
-                            <td className='text-center'>{v.PaymentAmount}</td>
+                            <td>{v.drawOn}</td>
+                            <td>{v.PaymentStatus}</td>
+                            <td className='text-center'>{v.dueOn}</td>
                             <td><img src={v.imageUrl} id='tableImage' /></td>
                             <td>{v.status}</td>
                             <td>
@@ -101,9 +136,12 @@ export default function PaymentData() {
                         <div class="modal-body">
                             <table id="myTable">
                                 <td>
-                                    <img src={Imagelink} alt="Girl in a jacket" width="500" height="300"></img>
-                                    <th style={{ width: "40%" }}><input type="text" placeholder='Quata Amount' /></th>
-                                    <th style={{ width: "40%" }}><input type="text" placeholder='Quata Amount' /></th>
+                                    <img src={OnData.imageUrl} alt="Girl in a jacket" width="500rem" height="300"></img>
+                                    <th style={{ width: "40%" }}><input type="text" ref={drawOnref} placeholder={OnData.drawOn} /></th>
+                                    <th style={{ width: "40%" }}><input type="text" ref={dueOnref} placeholder={OnData.dueOn} /></th>
+                                    {/* <br />
+                                    <th style={{ width: "40%" }}><input type="text" placeholder='PaymentMode' /></th>
+                                    <th style={{ width: "40%" }}><input type="text" placeholder='status' /></th> */}
                                 </td>
 
                             </table>
@@ -112,7 +150,7 @@ export default function PaymentData() {
                         {/* <!-- Modal footer --> */}
                         <div class="modal-footer">
                             {/* <button value={value} onClick={() => handleSubmit(value)}>Submit</button> */}
-                            <button id='sumbit' aria-label='' class="btn btn-success close" data-dismiss="modal"> SUMBIT</button>
+                            <button id='sumbit' aria-label='' class="btn btn-success close" data-dismiss="modal" onClick={() => handler()}> SUMBIT</button>
                             {/* <button type="button" onClick={handleSubmit} value={value} class="btn btn-success close">Submit</button> */}
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>

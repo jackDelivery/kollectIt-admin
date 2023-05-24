@@ -17,6 +17,8 @@ import StoreContext from '../../ContextApi';
 import { useNavigate } from "react-router-dom";
 import Admin from '../../Component/Members/AdminList/admin';
 import Quota from '../../Component/Quota/Quota';
+import CashierDashboard from '../../Component/CashierDashboard/CashierDashboard';
+import AdminDashboard from '../../Component/AdminDashboard/AdminDashboard';
 
 
 
@@ -125,6 +127,13 @@ export default function Dashboard() {
             label: <div onClick={() => setTrigger(16)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Aysne Rider ' : ''}</span></div>,
         },
         {
+            Cashier: 'Cashier',
+            // Admin: 'Admin',
+            key: '17',
+            icon: <BranchesOutlined onClick={() => setTrigger(17)} />,
+            label: <div onClick={() => setTrigger(17)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Cashier Dashboard ' : ''}</span></div>,
+        },
+        {
             // Cashier: "Cashier",
             Admin: 'Admin',
             key: '3',
@@ -196,6 +205,14 @@ export default function Dashboard() {
 
         },
         {
+            // Cashier: "Cashier",
+            Admin: 'Admin',
+            key: '18',
+            icon: <UserAddOutlined onClick={() => setTrigger(18)} />,
+            label: <div onClick={() => setTrigger(18)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Admin Dashboard' : ''}</span></div>,
+
+        },
+        {
             Cashier: "Cashier",
             Admin: 'Admin',
             key: '',
@@ -257,13 +274,13 @@ export default function Dashboard() {
 
             <Layout className="site-layout">
 
-                <Header className="site-layout-background" style={{ padding: 0,fontSize:30 }}>
+                <Header className="site-layout-background" style={{ padding: 0, fontSize: 30 }}>
                     {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                         className: 'trigger',
                         onClick: () => setCollapsed(!collapsed),
                     })}
-                
-                    { `${Role} Dashboard`}
+
+                    {`${Role} Dashboard`}
 
                 </Header>
                 <Content
@@ -337,11 +354,22 @@ export default function Dashboard() {
                                     <>
                                         <AysnRider />
                                     </>
-                                ) : (
-                                    <>
-                                        Page Not Found
-                                    </>
-                                )
+                                ) :
+                                    trigger === 17 ? (
+                                        <>
+                                            <CashierDashboard />
+                                        </>
+                                    ) :
+                                        trigger === 18 ? (
+                                            <>
+                                                <AdminDashboard />
+                                            </>
+                                        ) :
+                                            (
+                                                <>
+                                                    Page Not Found
+                                                </>
+                                            )
 
                     }
 
