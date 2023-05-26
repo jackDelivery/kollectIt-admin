@@ -44,8 +44,8 @@ export default function CashierDashboard() {
                 }
             }
         }).then((res) => {
-            // console.log(res.data.count, "raza");
-            setAysneRider(res.data.count)
+            console.log(res.data, "razassss");
+            // setAysneRider(res.data.count)
         }).catch((error) => {
             console.log(error, "error");
         })
@@ -62,7 +62,7 @@ export default function CashierDashboard() {
             }
         }).then((res) => {
             // console.log(res.data.count, "raza");
-            setEmployee(res.data.count)
+            setEmployee(res.data)
         }).catch((error) => {
             console.log(error, "error");
         })
@@ -205,7 +205,7 @@ export default function CashierDashboard() {
                                 <Text h='70px' backgroundColor="#1A7175" borderTopRadius={20} textAlign="center" p={7} fontSize={23} fontWeight="bold" color="white">
                                     Total Riders
                                     <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={35} fontWeight="bold" color="#1A7175">
-                                        {Employee}
+                                        {Employee.TotalRider}
                                     </Text>
                                 </Text>
                             </Stack>
