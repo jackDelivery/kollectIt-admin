@@ -5,7 +5,7 @@ import { Layout, Menu } from 'antd';
 import { Link, useLocation } from "react-router-dom";
 import {
     Cards, ClientForm, ClientData, CsvfileUpload, TransactionList,
-    PaymentData, AddMember, AdminList, Cashers, MembarList, Riders, AysnRider
+    PaymentData, AddMember, AdminList, Cashers, MembarList, Riders, AysnRider, SMSleger
 } from '../../Component/index';
 import {
     MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, ForkOutlined, RedEnvelopeOutlined,
@@ -161,30 +161,30 @@ export default function Dashboard() {
             label: <div onClick={() => setTrigger(13)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Quota' : ''}</span></div>,
 
         },
-        {
-            // Cashier: "Cashier",
-            Admin: 'Admin',
-            key: '14',
-            icon: <DiffOutlined onClick={() => setTrigger(13)} />,
-            label: <div onClick={() => setTrigger(13)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Reporting' : ''}</span></div>,
+        // {
+        //     // Cashier: "Cashier",
+        //     Admin: 'Admin',
+        //     key: '14',
+        //     icon: <DiffOutlined onClick={() => setTrigger(13)} />,
+        //     label: <div onClick={() => setTrigger(13)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Reporting' : ''}</span></div>,
 
-        },
-        {
-            Cashier: "Cashier",
-            // Admin: 'Admin',
-            key: '11',
-            icon: <RedEnvelopeOutlined onClick={() => setTrigger(13)} />,
-            label: <div onClick={() => setTrigger(13)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Deposit' : ''}</span></div>,
+        // },
+        // {
+        //     Cashier: "Cashier",
+        //     // Admin: 'Admin',
+        //     key: '11',
+        //     icon: <RedEnvelopeOutlined onClick={() => setTrigger(13)} />,
+        //     label: <div onClick={() => setTrigger(13)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Deposit' : ''}</span></div>,
 
-        },
-        {
-            Cashier: "Cashier",
-            Admin: 'Admin',
-            key: '15',
-            icon: <DatabaseOutlined onClick={() => setTrigger(13)} />,
-            label: <div onClick={() => setTrigger(13)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Update Profile' : ''}</span></div>,
+        // },
+        // {
+        //     Cashier: "Cashier",
+        //     Admin: 'Admin',
+        //     key: '15',
+        //     icon: <DatabaseOutlined onClick={() => setTrigger(13)} />,
+        //     label: <div onClick={() => setTrigger(13)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Update Profile' : ''}</span></div>,
 
-        },
+        // },
 
         {
             // Cashier: "Cashier",
@@ -210,6 +210,14 @@ export default function Dashboard() {
             key: '18',
             icon: <UserAddOutlined onClick={() => setTrigger(18)} />,
             label: <div onClick={() => setTrigger(18)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Admin Dashboard' : ''}</span></div>,
+
+        },
+        {
+            Cashier: "Cashier",
+            Admin: 'Admin',
+            key: '19',
+            icon: <UserAddOutlined onClick={() => setTrigger(19)} />,
+            label: <div onClick={() => setTrigger(19)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'SMS Leger' : ''}</span></div>,
 
         },
         {
@@ -365,11 +373,16 @@ export default function Dashboard() {
                                                 <AdminDashboard />
                                             </>
                                         ) :
-                                            (
+                                            trigger === 19 ? (
                                                 <>
-                                                    Page Not Found
+                                                    <SMSleger />
                                                 </>
-                                            )
+                                            ) :
+                                                (
+                                                    <>
+                                                        Page Not Found
+                                                    </>
+                                                )
 
                     }
 

@@ -48,7 +48,8 @@ function Login() { // login funcation
       navigate('/dashboard');
       RoleDetails.setUserData(res.data)
     }).catch((err) => {
-      console.log(err, "employee not found");
+      // console.log(err.message, "employee not found");
+    alert("incorrect credentials")
     })
 
   };

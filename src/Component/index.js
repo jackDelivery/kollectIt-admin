@@ -10,6 +10,7 @@ export { default as  Riders} from "./Members/Riders/Riders";
 export { default as  AysnRider} from "./Members/AysnRider/AysnRider";
 export { default as Cards } from "./Cards/Cards";
 export { default as TransactionList } from "./Transaction/Transaction";
+export { default as SMSleger } from "./SMSleger/SMSleger";
 // export { default as Dashboard } from "./Dashboard/Dashboard";
 
 
