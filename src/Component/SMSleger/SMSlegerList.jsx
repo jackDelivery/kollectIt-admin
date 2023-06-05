@@ -8,10 +8,10 @@ import { Url } from '../../Pages/Core';
 export default function QuotaList(data) {
 
     const [employeeData, setemployeeData] = useState([])
-    const [BelongsID, setBelongsID] = useState("")
+    const [ClientData, setClientData] = useState([])
+    // const [BelongsID, setBelongsID] = useState("")
     const [QuotaValue, setQuotaValue] = useState(null)
     // const value = React.useMemo(() => updateValue(BelongsID), [BelongsID])
-    const [ClientData, setClientData] = useState([])
     // const [realTime, setRealTime] = useState(true);
     // console.log(data.alldata, "dataaaaa");
     // console.log(data.alldata.Sender, "Sender");
@@ -19,7 +19,7 @@ export default function QuotaList(data) {
     useEffect(() => {
         axios({
             method: "post",
-            url: 'http://localhost:5000/filteredEmployee',
+            url: Url + '/filteredEmployee',
             data: {
                 "filter": {
                     "_id": data.alldata.Sender
@@ -30,22 +30,13 @@ export default function QuotaList(data) {
             setemployeeData(response.data[0].employeeName)
         })
 
-
-
-
     }, [])
-
-
-
-    const createBelongsID = (v) => {
-        setBelongsID(v.BelongsTo)
-    }
 
 
     useEffect(() => {
         axios({
             method: "post",
-            url: 'http://localhost:5000/filteredClients',
+            url: Url + '/filteredClients',
             data: {
                 "filter": {
                     "_id": data.alldata.Reciver

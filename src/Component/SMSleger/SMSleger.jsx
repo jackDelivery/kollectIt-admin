@@ -24,7 +24,7 @@ export default function SMSleger() {
         if (BelongsID == 'Admin') {
             axios({
                 method: "Post",
-                url: 'http://localhost:5000/smsLedger',
+                url: Url + '/smsLedger',
                 data: {
                     "filter": {
                         "_id": "647880fd648ca7a0d083b1e2"
@@ -37,7 +37,7 @@ export default function SMSleger() {
         } else {
             axios({
                 method: "Post",
-                url: 'http://localhost:5000/smsLedger',
+                url: Url + '/smsLedger',
                 data: {
                     "filter": {
                         "createdBy": UserCredentials.UserData.createdBy
