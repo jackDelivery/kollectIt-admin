@@ -1,17 +1,26 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState,useContext } from 'react';
 import { Url } from '../../../Pages/Core';
+import StoreContext from '../../../ContextApi';
 
 export default function Cashers() {
 
   const [allData, setallData] = useState([])
+  const UserCredentials = useContext(StoreContext);
+// console.log(UserCredentials.UserData);
 
   useEffect(() => {
     axios({
-      method: "get",
-      url: Url + '/auth/CashierEmploye',
+      method: "post",
+      url: Url + '/filteredEmployee',
+      data:{
+        filter:{
+          "createdBy": UserCredentials.UserData._id,
+          "Role":"Cashier"
+        }
+      }
     }).then((response) => {
-      // console.log(response.data,"response")
+      console.log(response.data,"response")
       setallData(response.data)
     })
   }, [])

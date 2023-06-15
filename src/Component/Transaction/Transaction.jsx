@@ -2,9 +2,10 @@
 import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Url } from "../../Pages/Core";
 import './Transaction.css';
+import StoreContext from "../../ContextApi";
 
 
 export default function TransactionList() {
@@ -12,12 +13,17 @@ export default function TransactionList() {
     const [dataTras, setDatatras] = useState([]);
     const [fromName, setFromName] = useState([]);
     const [toName, setToName] = useState([]);
-
+    const UserCredentials = useContext(StoreContext);
 
     useEffect(() => {
         axios({
-            method: "get",
-            url: Url+"/auth/transaction",
+            method: "post",
+            url: Url + "/auth/filterTransaction",
+            data: {
+                "filter": {
+                    "BelongTo": UserCredentials.UserData._id
+                }
+            }
         }).then(res => {
             // console.log(res.data, "resss");
             setDatatras(res.data)
@@ -41,7 +47,7 @@ export default function TransactionList() {
             axios({
 
                 method: "post",
-                url: Url+"/auth/empolyeeClientData",
+                url: Url + "/auth/empolyeeClientData",
                 data: {
 
                     EmployeeObjectId: traData.to
@@ -59,16 +65,13 @@ export default function TransactionList() {
             });
 
 
-              //for from
-              axios({
-
+            //for from
+            axios({
                 method: "post",
-                url: Url+"/auth/empolyeeClientData",
+                url: Url + "/auth/empolyeeClientData",
                 data: {
-
                     EmployeeObjectId: traData.From
                 }
-
             }).then((res) => {
 
                 console.log(res.data, "in Internal Transfer from API");
@@ -80,13 +83,37 @@ export default function TransactionList() {
 
             });
 
+
+            // //for from
+            // axios({
+
+            //     method: "post",
+            //     url: Url + "/filteredClients",
+            //     data: {
+            //         "filter": {
+            //             _id: traData.From
+            //         }
+            //     }
+
+
+            // }).then((res) => {
+
+            //     // console.log(res.data[0].CashierName, "in Internal Transfer from API");
+            //     setFromName(res.data[0].CashierName);
+
+
+            // }).catch((error) => {
+            //     console.error("Error in Internal transfer from ", error);
+
+            // });
+
         }
     }
 
 
-   
 
-    console.log(toName,"toName");
+
+    console.log(toName, "toName");
     return (
         <div class="card card-cascade narrower">
             <div class="container mt-3">

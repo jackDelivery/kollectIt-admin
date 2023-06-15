@@ -21,7 +21,7 @@ export default function ClientForm() {
     // console.log(ClientId.current.value, ClientName.current.value, ClientEmail.current.value, ClientPhoneNumber.current.value, ClientAmount.current.value, 'This is a success message');
     axios({
       method: 'post',
-      url: Url+"/ClientData",
+      url: Url + "/ClientData",
       data: {
         ClientId: ClientId.current.value,
         ClientName: ClientName.current.value,
@@ -50,59 +50,48 @@ export default function ClientForm() {
 
   return (
     <div>
-      Client Form
+      {/* Client Form
       <br />
-      <br />
+      <br /> */}
 
-      <div class="container">
-        <form
+      <div class="container col-50" style={{ display: "flex", alignItems: "center", justifyContent: "center", }}>
+        <form style={{ padding: '5px', margin: "5px", boxShadow: "1px 2px 5px 2px #888888" }}
           onSubmit={(e) => {
             e.preventDefault();
             FormSubmit();
           }}>
-          <div class="row">
-            <div class="col-25">
-              <label for="fname">Client Id</label>
-            </div>
-            <div class="col-75">
-              <input type="text" id="fname" name="firstname" ref={ClientId} placeholder="Client Id.." required />
-            </div>
+          <div style={{ textAlign: "center" }}>
+            <h1>Client Form</h1>
+            <p>Please fill in this form to create an account.</p>
           </div>
-          <div class="row">
-            <div class="col-25">
-              <label for="fname">Client Name</label>
-            </div>
-            <div class="col-75">
-              <input type="text" id="fname" name="firstname" ref={ClientName} placeholder="Client name.." required />
-            </div>
+          <hr />
+
+
+          <div class="row p-2">
+
+            <label for="fname">Id</label>
+            <input type="text" id="fname" name="firstname" ref={ClientId} placeholder="Client Id.." required />
+
+            <label for="fname">Name</label>
+            <input type="text" id="fname" name="firstname" ref={ClientName} placeholder="Client name.." required />
           </div>
-          <div class="row">
-            <div class="col-25">
-              <label for="lname">Client Contact Number</label>
-            </div>
-            <div class="col-75">
-              <input type="text" id="lname" name="lastname" ref={ClientPhoneNumber} placeholder="Client Phone Number.." />
-            </div>
+          {/* <div class="row"> */}
+          {/* </div> */}
+          <div class="row p-2">
+            <label for="lname">Contact Number</label>
+            <input type="text" id="lname" name="lastname" ref={ClientPhoneNumber} placeholder="Client Phone Number.." />
           </div>
-          <div class="row">
-            <div class="col-25">
-              <label for="lname">Client Email</label>
-            </div>
-            <div class="col-75">
-              <input type="text" id="lname" name="lastname" ref={ClientEmail} placeholder="Client Email.." />
-            </div>
+          <div class="row p-2">
+            <label for="lname">Email</label>
+            <input type="text" id="lname" name="lastname" ref={ClientEmail} placeholder="Client Email.." />
           </div>
-          <div class="row">
-            <div class="col-25">
-              <label for="lname">Client Amount</label>
-            </div>
-            <div class="col-75">
-              <input type="text" id="lname" name="lastname" ref={ClientAmount} placeholder="Client Amount.." />
-            </div>
+          <div class="row p-2">
+            <label for="lname">Amount</label>
+            <input type="text" id="lname" name="lastname" ref={ClientAmount} placeholder="Client Amount.." />
           </div>
           <br />
-          <div class="row">
-            <input type="submit" value="Submit" />
+          <div class="row p-2">
+            <input type="submit" value="Submit" style={{ backgroundColor: "#427D8F" }} />
           </div>
         </form>
       </div>

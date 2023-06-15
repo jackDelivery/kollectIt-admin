@@ -5,7 +5,7 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import StoreContext from '../../ContextApi';
 import { useNavigate } from "react-router-dom";
 import { Url } from "../Core/index";
-import Kicon from '../../Component/assets/K-icon.png';
+import Kicon from './kollect-logo.png';
 
 
 function simulateNetworkRequest() { //
@@ -36,7 +36,7 @@ function Login() { // login funcation
 
     axios({
       method: "post",
-      url: Url+"/auth/login",
+      url: Url + "/auth/login",
       data: {
         email: email.current.value,
         password: password.current.value,
@@ -49,7 +49,7 @@ function Login() { // login funcation
       RoleDetails.setUserData(res.data)
     }).catch((err) => {
       // console.log(err.message, "employee not found");
-    alert("incorrect credentials")
+      alert("incorrect credentials")
     })
 
   };
@@ -57,21 +57,19 @@ function Login() { // login funcation
 
   return (
     <div>
+       <div className="shadow-lg bg-white" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <img src={Kicon} height={80} />
+        <h1 style={{ color: "#427d8f" }}>Kollectlt Dahboard</h1>
+      </div>
       <Container>
-
-        <h1 className="shadow-lg p-3 mb-5 bg-white rounded p-3 text-center" style={{color:"#427d8f"}}>Admin Login</h1>
         <Row className="mt-5">
-          <Col lg={5} md={6} sm={12} className="shadow-lg p-3 mb-5 bg-white rounded p-4 m-auto  " >
-            <h3 className='text-center'style={{color:"#427d8f"}}><img src={Kicon} height={80} />Kollectlt Dahboard</h3>
-            <br />
-
-            <Form
-            >
-
+          <Col lg={5} md={6} sm={12} className="shadow-lg rounded m-auto  p-4" >
+            <h1 className='text-center' style={{ color: "#427d8f" }}>Sign In</h1>
+            <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" ref={email} />
-                
+
                 <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
                 </Form.Text>
@@ -83,7 +81,7 @@ function Login() { // login funcation
               </Form.Group>
 
 
-              <Button style={{backgroundColor:"#427d8f"}}
+              <Button style={{ backgroundColor: "#427d8f" }}
                 disabled={isLoading}
                 onClick={!isLoading ? handleClick : null}>
 

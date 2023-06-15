@@ -96,7 +96,7 @@ export default function AdminDashboard() {
                 }
             }
         }).then((res) => {
-            // console.log(res.data.count, "raza");
+            console.log(res.data.count, "raza");
             setPaymentData(res.data)
         }).catch((error) => {
             console.log(error, "error");
@@ -171,17 +171,16 @@ export default function AdminDashboard() {
         ],
     };
     return (
-        <Container maxW="container" p='10' rounded='lg' bg="#F0F2F5">
+        <Container maxW="container" p='10' rounded='lg' bg="#427D8F">
             <Box boxShadow="2xl" rounded="md" padding='5%' backgroundColor='#EDF2F7' justifyItems="center" alignItems="center">
                 <Flex justifyContent="space-evenly" alignItems="center">
 
                     <Wrap spacing='50px'>
                         <WrapItem>
                             <Stack w='180px' h='140px' backgroundColor="#8EB9BB" borderRadius={20}>
-                                <Text h='70px' backgroundColor="#1A7175" borderTopRadius={20} textAlign="center" p={7} fontSize={20} fontWeight="bold" color="white">
+                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={7} fontSize={20} fontWeight="bold" color="white">
                                     Total Clients
-
-                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#1A7175">
+                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
                                         {Client}
                                     </Text>
                                 </Text>
@@ -191,9 +190,9 @@ export default function AdminDashboard() {
 
                         <WrapItem>
                             <Stack w='180px' h='140px' backgroundColor="#8EB9BB" borderRadius={20}>
-                                <Text h='70px' backgroundColor="#1A7175" borderTopRadius={20} textAlign="center" p={7} fontSize={19} fontWeight="bold" color="white">
+                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={7} fontSize={19} fontWeight="bold" color="white">
                                     Total Cashiers
-                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#1A7175">
+                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
                                         {Employee.TotalCashier}
                                     </Text>
                                 </Text>
@@ -202,9 +201,9 @@ export default function AdminDashboard() {
 
                         <WrapItem>
                             <Stack w='180px' h='140px' backgroundColor="#8EB9BB" borderRadius={20}>
-                                <Text h='70px' backgroundColor="#1A7175" borderTopRadius={20} textAlign="center" p={7} fontSize={20} fontWeight="bold" color="white">
+                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={7} fontSize={20} fontWeight="bold" color="white">
                                     Total Riders
-                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#1A7175">
+                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
                                         {Employee.TotalRider}
                                     </Text>
                                 </Text>
@@ -213,9 +212,9 @@ export default function AdminDashboard() {
 
                         <WrapItem>
                             <Stack w='180px' h='140px' backgroundColor="#8EB9BB" borderRadius={20}>
-                                <Text h='70px' backgroundColor="#1A7175" borderTopRadius={20} textAlign="center" p={7} fontSize={20} fontWeight="bold" color="white">
+                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={7} fontSize={20} fontWeight="bold" color="white">
                                     Transactions
-                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#1A7175">
+                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
                                         {PaymentData.totalAmount}
                                     </Text>
                                 </Text>

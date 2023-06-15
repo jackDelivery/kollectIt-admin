@@ -1,11 +1,10 @@
-import React, { useRef, useMemo, useEffect } from "react";
+import React, { useRef, useContext, useEffect } from "react";
 import { MDBDataTableV5 } from 'mdbreact';
 import { useState } from 'react';
 import './PaymentData.css'
 import axios from 'axios';
 import { Url } from '../../Pages/Core';
-
-
+import StoreContext from "../../ContextApi";
 
 
 
@@ -22,17 +21,35 @@ export default function PaymentData() {
     let drawOnref = useRef();
     let dueOnref = useRef();
 
+    const UserCredentials = useContext(StoreContext);
+    
     useEffect(() => {
         axios({
-            method: "get",
-            url: Url + "/",
+            method: "post",
+            url: Url + '/multiFilteredPayments',
+            data: {
+                filter: {
+                    "BelongsTo": UserCredentials.UserData._id
+                }
+            }
         }).then((response) => {
-            // console.log(response.data,"response")
-            setallData(response.data.Data)
+            console.log(response.data, "response")
+            setallData(response.data)
         })
     }, [realTime])
 
-    console.log(allData, "allData");
+    // useEffect(() => {
+    //     axios({
+    //         method: "get",
+    //         url: Url + "/",
+    //     }).then((response) => {
+    //         // console.log(response.data,"response")
+    //         setallData(response.data.Data)
+    //     })
+    // }, [realTime])
+
+
+    // console.log(allData, "allData");
 
     function myFunction() {
         var input, filter, table, tr, td, i, txtValue;

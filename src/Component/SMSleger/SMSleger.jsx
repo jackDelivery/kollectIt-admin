@@ -13,7 +13,7 @@ export default function SMSleger() {
     const [refresher, setRefresher] = useState(false);
     const [BelongsID, setBelongsID] = useState(UserCredentials.UserData.Role)
     let ID = UserCredentials.UserData._id
-    console.log(UserCredentials.UserData.createdBy, "UserCredentials");
+    console.log(UserCredentials.UserData, "UserCredentials");
 
 
 
@@ -27,7 +27,7 @@ export default function SMSleger() {
                 url: Url + '/smsLedger',
                 data: {
                     "filter": {
-                        "_id": "647880fd648ca7a0d083b1e2"
+                        "belongTo": UserCredentials.UserData._id
                     }
                 }
             }).then((response) => {

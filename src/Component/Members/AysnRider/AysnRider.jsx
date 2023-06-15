@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Button, Modal } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Url } from '../../../Pages/Core';
+import StoreContext from '../../../ContextApi';
 
 
 
@@ -12,23 +13,56 @@ export default function AysnRider() {
     const [Client, setClient] = useState([])
     const [ClinetID, setClinetID] = useState(null)
     const [realTime, setRealTime] = useState(true);
-
+    const UserCredentials = useContext(StoreContext);
+    // console.log(UserCredentials.UserData._id, "raza");
     useEffect(() => {
-        axios({
-            method: "get",
-            url: Url + "/ClientData",
-        }).then((response) => {
-            // console.log(response.data,"response")
-            setClient(response.data.Data)
-        })
+        // axios({
+        //     method: "get",
+        //     url: Url + "/ClientData",
+        // }).then((response) => {
+        //     // console.log(response.data,"response")
+        //     setClient(response.data.Data)
+        // })AssignedBy
+
+        if (UserCredentials.UserData.Role === "Admin") {
+            axios({
+                method: "post",
+                url: Url + '/filteredClients',
+                data: {
+                    "filter": {
+                        "BelongsTo": UserCredentials.UserData._id
+                    }
+                }
+            }).then((response) => {
+                setClient(response.data)
+            })
+        } else {
+            axios({
+                method: "post",
+                url: Url + '/filteredClients',
+                data: {
+                    "filter": {
+                        "AssignedBy": UserCredentials.UserData._id
+                    }
+                }
+            }).then((response) => {
+                setClient(response.data)
+            })
+        }
     }, [realTime])
 
     useEffect(() => {
         axios({
-            method: "get",
-            url: Url + "/auth/RiderEmploye",
+            method: "post",
+            url: Url + '/filteredEmployee',
+            data: {
+                filter: {
+                    "createdBy": UserCredentials.UserData._id,
+                    "Role": "Rider"
+                }
+            }
         }).then((response) => {
-            // console.log(response.data,"response")
+            console.log(response.data, "response")
             setallData(response.data)
         })
     }, [])

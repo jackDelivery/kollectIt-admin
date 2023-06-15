@@ -7,8 +7,10 @@ input[type=text], select, textarea {
 }
 
 label {
-  padding: 12px 12px 12px 0;
+  /* padding: 12px 12px 12px 0; */
   display: inline-block;
+  font-weight: bold;
+  /* font-size: large; */
 }
 
 input[type=submit] {
@@ -48,6 +50,7 @@ input[type=submit]:hover {
   content: "";
   display: table;
   clear: both;
+
 }
 
 #subject {

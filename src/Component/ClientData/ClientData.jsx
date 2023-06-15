@@ -1,26 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
 import './ClientData.css'
 import axios from 'axios';
 import { Url } from '../../Pages/Core';
-
+import StoreContext from '../../ContextApi';
 
 export default function ClientData() {
 
     const [allData, setallData] = useState([])
-
-
+    const UserCredentials = useContext(StoreContext);
+    
     useEffect(() => {
         axios({
-            method: "get",
-            url: Url+"/ClientData",
+            method: "post",
+            url: Url + '/auth/filterClient',
+            data: {
+                filter: {
+                    "BelongsTo": UserCredentials.UserData._id
+                }
+            }
         }).then((response) => {
-            // console.log(response.data,"response")
-            setallData(response.data.Data)
+            console.log(response.data, "response")
+            setallData(response.data)
         })
     }, [])
 
-    console.log(allData, "allData");
+    // console.log(allData, "allData");
 
     function myFunction() {
         var input, filter, table, tr, td, i, txtValue;
@@ -52,8 +57,6 @@ export default function ClientData() {
                     <th style={{ width: 60 }}>Number</th>
                     <th style={{ width: 60 }}>Email</th>
                     <th style={{ width: 60 }}>Amount</th>
-                    <th style={{ width: 60 }}></th>
-                    <th style={{ width: 40 }}></th>
                 </tr>
                 {allData.map((v, index) => {
                     return (

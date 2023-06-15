@@ -19,7 +19,7 @@ import Admin from '../../Component/Members/AdminList/admin';
 import Quota from '../../Component/Quota/Quota';
 import CashierDashboard from '../../Component/CashierDashboard/CashierDashboard';
 import AdminDashboard from '../../Component/AdminDashboard/AdminDashboard';
-
+import Kicon from '../Login/kollect-logo.png';
 
 
 
@@ -51,13 +51,13 @@ export default function Dashboard() {
 
 
     var a = [
-        {
-            Cashier: 'Cashier',
-            Admin: 'Admin',
-            key: '7',
-            icon: <UsergroupAddOutlined onClick={() => setTrigger(7)} />,
-            label: <div onClick={() => setTrigger(7)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'All Data Members' : ''}</span></div>,
-        },
+        // {
+        //     Cashier: 'Cashier',
+        //     Admin: 'Admin',
+        //     key: '7',
+        //     icon: <UsergroupAddOutlined onClick={() => setTrigger(7)} />,
+        //     label: <div onClick={() => setTrigger(7)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'All Data Members' : ''}</span></div>,
+        // },
         {
             key: '8',
             icon: <UserOutlined onClick={() => setTrigger(8)} />,
@@ -113,7 +113,7 @@ export default function Dashboard() {
 
         {
             Cashier: "Cashier",
-            // Admin: 'Admin',
+            Admin: 'Admin',
             key: '2',
             icon: <FormOutlined onClick={() => setTrigger(2)} />,
             label: <div onClick={() => setTrigger(2)}> <span style={{ marginLeft: '5%' }}> {!collapsed ? 'Add Client' : ''}</span></div>,
@@ -142,7 +142,7 @@ export default function Dashboard() {
         },
         {
             Cashier: "Cashier",
-            // Admin: 'Admin',
+            Admin: 'Admin',
             key: '4',
             icon: <TeamOutlined onClick={() => setTrigger(4)} />,
             label: <div onClick={() => setTrigger(4)}><span style={{ marginLeft: '5%' }}>{!collapsed ? 'View Payment' : ''}</span></div>,
@@ -204,14 +204,14 @@ export default function Dashboard() {
             label: <div onClick={() => setTrigger(6)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Add Member' : ''}</span></div>,
 
         },
-        {
-            // Cashier: "Cashier",
-            Admin: 'Admin',
-            key: '18',
-            icon: <UserAddOutlined onClick={() => setTrigger(18)} />,
-            label: <div onClick={() => setTrigger(18)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Admin Dashboard' : ''}</span></div>,
+        // {
+        //     // Cashier: "Cashier",
+        //     Admin: 'Admin',
+        //     key: '18',
+        //     icon: <UserAddOutlined onClick={() => setTrigger(18)} />,
+        //     label: <div onClick={() => setTrigger(18)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Admin Dashboard' : ''}</span></div>,
 
-        },
+        // },
         {
             Cashier: "Cashier",
             Admin: 'Admin',
@@ -268,9 +268,9 @@ export default function Dashboard() {
                 minHeight: '100vh',
             }}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
-                <div className="logo">
-                </div>
-
+                {/* <div className="logo"> */}
+                <img src={Kicon} />
+                {/* </div> */}
                 <Menu
                     theme="dark"
                     mode="inline"
@@ -282,13 +282,14 @@ export default function Dashboard() {
 
             <Layout className="site-layout">
 
-                <Header className="site-layout-background" style={{ padding: 0, fontSize: 30 }}>
+                <Header className="site-layout-background" style={{ padding: 0, fontSize: 30, backgroundColor: "#427D8F" }}>
                     {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                         className: 'trigger',
                         onClick: () => setCollapsed(!collapsed),
                     })}
-
-                    {`${Role} Dashboard`}
+                    <span style={{ textAlign: "center", color: "white" }}>
+                        {`${Role} Dashboard`}
+                    </span>
 
                 </Header>
                 <Content
@@ -304,7 +305,7 @@ export default function Dashboard() {
 
                         trigger === 1 ? (
                             <>
-                                <Cards />
+                                <AdminDashboard />
                             </>
                         ) : trigger === 2 ? (
                             <>
@@ -352,41 +353,32 @@ export default function Dashboard() {
                             <>
                                 <TransactionList />
                             </>
-                        ) :
-                            trigger === 13 ? (
-                                <>
-                                    <Quota />
-                                </>
-                            ) :
-                                trigger === 16 ? (
-                                    <>
-                                        <AysnRider />
-                                    </>
-                                ) :
-                                    trigger === 17 ? (
-                                        <>
-                                            <CashierDashboard />
-                                        </>
-                                    ) :
-                                        trigger === 18 ? (
-                                            <>
-                                                <AdminDashboard />
-                                            </>
-                                        ) :
-                                            trigger === 19 ? (
-                                                <>
-                                                    <SMSleger />
-                                                </>
-                                            ) :
-                                                (
-                                                    <>
-                                                        Page Not Found
-                                                    </>
-                                                )
-
+                        ) : trigger === 13 ? (
+                            <>
+                                <Quota />
+                            </>
+                        ) : trigger === 16 ? (
+                            <>
+                                <AysnRider />
+                            </>
+                        ) : trigger === 17 ? (
+                            <>
+                                <CashierDashboard />
+                            </>
+                        ) : trigger === 18 ? (
+                            <>
+                                <AdminDashboard />
+                            </>
+                        ) : trigger === 19 ? (
+                            <>
+                                <SMSleger />
+                            </>
+                        ) : (
+                            <>
+                                Page Not Found
+                            </>
+                        )
                     }
-
-
                 </Content>
             </Layout>
         </Layout>

@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Url } from '../../../Pages/Core';
+import StoreContext from '../../../ContextApi';
 
 
 
@@ -10,14 +11,21 @@ import { Url } from '../../../Pages/Core';
 export default function Riders() {
 
   const [allData, setallData] = useState([]);
+  const UserCredentials = useContext(StoreContext);
 
 
   useEffect(() => {
     axios({
-      method: "get",
-      url: Url + '/auth/RiderEmploye',
+      method: "post",
+      url: Url + '/filteredEmployee',
+      data: {
+        filter: {
+          "createdBy": UserCredentials.UserData._id,
+          "Role": "Rider"
+        }
+      }
     }).then((response) => {
-      // console.log(response.data,"response")
+      console.log(response.data, "response")
       setallData(response.data)
     })
   }, [])
@@ -40,7 +48,7 @@ export default function Riders() {
             </tr>
           </thead>
           <tbody>
-          {allData.map((v, i) => {
+            {allData.map((v, i) => {
               return (
                 <tr>
                   <td>{v.employeeName}</td>
@@ -50,7 +58,7 @@ export default function Riders() {
                     <span class="badge badge-success rounded-pill d-inline">Active</span>
                   </td>
                   <td>Senior</td>
-                  <td><button  class="btn btn-primary btn-rounded">{v.Role}</button></td>
+                  <td><button class="btn btn-primary btn-rounded">{v.Role}</button></td>
                 </tr>
 
               )
