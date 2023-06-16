@@ -37,6 +37,7 @@ export default function Dashboard() {
         if (localRole) {
             setlocalRole(localRole);
         }
+        localRole === 'Cashier' ? setTrigger(17) : <></>
     }, []);
 
 
@@ -104,7 +105,7 @@ export default function Dashboard() {
 
     var item = [
         {
-            Cashier: "Cashier",
+            // Cashier: "Cashier",
             Admin: 'Admin',
             key: '1',
             icon: <HomeOutlined onClick={() => setTrigger(1)} />,
@@ -112,13 +113,18 @@ export default function Dashboard() {
         },
 
         {
+            Cashier: 'Cashier',
+            key: '17',
+            icon: <BranchesOutlined onClick={() => setTrigger(17)} />,
+            label: <div onClick={() => setTrigger(17)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Home' : ''}</span></div>,
+        },
+        {
             Cashier: "Cashier",
             Admin: 'Admin',
             key: '2',
             icon: <FormOutlined onClick={() => setTrigger(2)} />,
             label: <div onClick={() => setTrigger(2)}> <span style={{ marginLeft: '5%' }}> {!collapsed ? 'Add Client' : ''}</span></div>,
         },
-        // Role =="SuperAdmin"?<></>:
         {
             Cashier: 'Cashier',
             // Admin: 'Admin',
@@ -127,14 +133,7 @@ export default function Dashboard() {
             label: <div onClick={() => setTrigger(16)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Aysne Rider ' : ''}</span></div>,
         },
         {
-            Cashier: 'Cashier',
-            // Admin: 'Admin',
-            key: '17',
-            icon: <BranchesOutlined onClick={() => setTrigger(17)} />,
-            label: <div onClick={() => setTrigger(17)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Cashier Dashboard ' : ''}</span></div>,
-        },
-        {
-            // Cashier: "Cashier",
+            Cashier: "Cashier",
             Admin: 'Admin',
             key: '3',
             icon: <TeamOutlined onClick={() => setTrigger(3)} />,
@@ -205,7 +204,7 @@ export default function Dashboard() {
 
         },
         // {
-        //     // Cashier: "Cashier",
+        //     Cashier: "Cashier",
         //     Admin: 'Admin',
         //     key: '18',
         //     icon: <UserAddOutlined onClick={() => setTrigger(18)} />,
@@ -253,6 +252,7 @@ export default function Dashboard() {
             return num.Admin
         } else if (Role === "Cashier") {
             return num.Cashier
+
         }
     })
 
@@ -365,19 +365,21 @@ export default function Dashboard() {
                             <>
                                 <CashierDashboard />
                             </>
-                        ) : trigger === 18 ? (
-                            <>
-                                <AdminDashboard />
-                            </>
-                        ) : trigger === 19 ? (
-                            <>
-                                <SMSleger />
-                            </>
-                        ) : (
-                            <>
-                                Page Not Found
-                            </>
                         )
+                            // : trigger === 18 ? (
+                            //     <>
+                            //         <AdminDashboard />
+                            //     </>
+                            // )
+                            : trigger === 19 ? (
+                                <>
+                                    <SMSleger />
+                                </>
+                            ) : (
+                                <>
+                                    Page Not Found
+                                </>
+                            )
                     }
                 </Content>
             </Layout>

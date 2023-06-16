@@ -9,20 +9,33 @@ export default function ClientData() {
 
     const [allData, setallData] = useState([])
     const UserCredentials = useContext(StoreContext);
-    
+
     useEffect(() => {
-        axios({
-            method: "post",
-            url: Url + '/auth/filterClient',
-            data: {
-                filter: {
-                    "BelongsTo": UserCredentials.UserData._id
+        if (UserCredentials.UserData.Role === "Admin") {
+            axios({
+                method: "post",
+                url: Url + '/filteredClients',
+                data: {
+                    "filter": {
+                        "BelongsTo": UserCredentials.UserData._id
+                    }
                 }
-            }
-        }).then((response) => {
-            console.log(response.data, "response")
-            setallData(response.data)
-        })
+            }).then((response) => {
+                setallData(response.data)
+            })
+        } else {
+            axios({
+                method: "post",
+                url: Url + '/filteredClients',
+                data: {
+                    "filter": {
+                        "AssignedBy": UserCredentials.UserData._id
+                    }
+                }
+            }).then((response) => {
+                setallData(response.data)
+            })
+        }
     }, [])
 
     // console.log(allData, "allData");

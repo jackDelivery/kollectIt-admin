@@ -25,7 +25,7 @@ export default function CashierDashboard() {
 
     let CashierObjId = RoleDetails.UserData._id
 
-    // console.log(RoleDetails.UserData._id, "localRole");
+    console.log(RoleDetails.UserData._id, "localRole");
     useEffect(() => {
         totalClient()
         totalPayment()
@@ -37,15 +37,16 @@ export default function CashierDashboard() {
     function aysneClient() {
         axios({
             method: "post",
-            url: Url + "/dash/multiFilteredemployee",
+            url: Url + "/dash/multiFilteredClient",
+            // url: Url + "/dash/multiFilteredemployee",
             data: {
                 "filter": {
                     "AssignedBy": CashierObjId
                 }
             }
         }).then((res) => {
-            console.log(res.data, "razassss");
-            // setAysneRider(res.data.count)
+            // console.log(res.data, "razassss");
+            setAysneRider(res.data.count)
         }).catch((error) => {
             console.log(error, "error");
         })
@@ -57,11 +58,11 @@ export default function CashierDashboard() {
             url: Url + "/dash/multiFilteredemployee",
             data: {
                 "filter": {
-                    "createdBy": CashierObjId
+                    "createdBy": RoleDetails.UserData.createdBy
                 }
             }
         }).then((res) => {
-            // console.log(res.data.count, "raza");
+            // console.log(res.data.count, "Total Rider");
             setEmployee(res.data)
         }).catch((error) => {
             console.log(error, "error");
@@ -71,14 +72,15 @@ export default function CashierDashboard() {
     function totalClient() {
         axios({
             method: "post",
+            // url: Url + "/dash/multiFilteredClient",
             url: Url + "/dash/multiFilteredClient",
             data: {
                 "filter": {
-                    "BelongsTo": CashierObjId
+                    "BelongsTo": RoleDetails.UserData.createdBy
                 }
             }
         }).then((res) => {
-            // console.log(res.data.count, "raza");
+            console.log(res.data, "Total Client");
             setClient(res.data.count)
         }).catch((error) => {
             console.log(error, "error");
@@ -194,7 +196,7 @@ export default function CashierDashboard() {
                                     Assigned Clients
 
                                     <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={35} fontWeight="bold" color="#1A7175">
-                                      {AysneRider}
+                                        {AysneRider}
                                     </Text>
                                 </Text>
                             </Stack>

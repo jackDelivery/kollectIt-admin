@@ -32,7 +32,7 @@ export default function AddMember() {
 
     return (
         <div class="container col-50" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <form style={{ padding: '5px', margin: "5px",   boxShadow:"1px 2px 5px 2px #888888"}}
+            <form style={{ padding: '5px', margin: "5px", boxShadow: "1px 2px 5px 2px #888888" }}
                 onSubmit={(e) => {
                     e.preventDefault();
                     employe()
@@ -45,17 +45,31 @@ export default function AddMember() {
                     </div>
                     <hr />
                     <div>
-                        <label for="psw-repeat"><b>Name</b></label>
+                        <label for="psw-repeat"><b>User Name</b></label>
                         <input type="text" placeholder="member Name" name="name" ref={name} />
                     </div>
-                    <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" ref={email} />
+                    <div>
+                        <label for="email"><b>Login Id</b></label>
+                        <input type="text" placeholder="Enter Email" name="email" ref={email} />
+                    </div>
+                    <div>
+                        <label for="Contact Number"><b>Conatct Number</b></label>
+                        <input type="text" placeholder="Enter Email" name="email" ref={email} />
+                    </div>
 
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" ref={password} />
 
+                    {/* <label for="psw"><b>Password</b></label> */}
+                    <label for="role">Choose a Role:</label>
+                    <select name="role" id="role">
+                        <option value="Rider">Rider</option>
+                        <option value="Cashier">Cashier</option>
+                    </select>
+
+
                     <hr />
-                    <button type="submit" class="registerbtn" style={{backgroundColor:"#427D8F"}}>Register</button>
+                    <button type="submit" class="registerbtn" style={{ backgroundColor: "#427D8F" }}>Register</button>
                 </div>
             </form>
         </div>
