@@ -1,15 +1,23 @@
+import React, { useState, useRef, useContext } from 'react';
 import axios from 'axios';
-import React, { useEffect, useState, useRef } from 'react';
-import { Url } from '../../Pages/Core';
 import './AddMember.css';
+import { Url } from '../../Pages/Core';
+import StoreContext from '../../ContextApi';
+
 
 
 export default function AddMember() {
 
+    let [Role, setRole] = useState('')
     const name = useRef()
     const email = useRef()
     const password = useRef()
+    const ConatactNumber = useRef()
 
+    const RoleDetails = useContext(StoreContext);
+    let UserDetail = RoleDetails.UserData
+
+    // console.log(UserDetail, Role, "UserDetail");
     function employe() {
         axios({
             method: "post",
@@ -18,7 +26,11 @@ export default function AddMember() {
                 name: name.current.value,
                 email: email.current.value,
                 password: password.current.value,
-                Role: "Awaiting",
+                ConatactNumber: ConatactNumber.current.value,
+                shortCode: UserDetail.shortCode,
+                createdBy: UserDetail._id,
+                companyName: UserDetail.companyName,
+                Role: Role
             }
         }).then((res) => {
             alert(res.data.message)
@@ -54,15 +66,15 @@ export default function AddMember() {
                     </div>
                     <div>
                         <label for="Contact Number"><b>Conatct Number</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" ref={email} />
+                        <input type="text" placeholder="Enter Conatact Number" name="number" ref={ConatactNumber} />
                     </div>
 
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" ref={password} />
 
-                    {/* <label for="psw"><b>Password</b></label> */}
                     <label for="role">Choose a Role:</label>
-                    <select name="role" id="role">
+                    <select name="role" id="role" onChange={(e) => { setRole(e.target.value) }}>
+                        <option value="Rider">Select Role</option>
                         <option value="Rider">Rider</option>
                         <option value="Cashier">Cashier</option>
                     </select>

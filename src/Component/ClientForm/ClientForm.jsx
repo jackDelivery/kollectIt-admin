@@ -1,10 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Table, Radio, Divider, InputNumber, message } from 'antd';
+import React, { useContext, useRef } from 'react';
 import './ClientForm.css';
 import axios from 'axios';
-import { RestFilled } from '@ant-design/icons';
 import { Url } from '../../Pages/Core';
-
+import StoreContext from '../../ContextApi';
 
 
 export default function ClientForm() {
@@ -15,6 +13,10 @@ export default function ClientForm() {
   const ClientEmail = useRef()
   const ClientPhoneNumber = useRef()
   const ClientAmount = useRef()
+
+  const RoleDetails = useContext(StoreContext);
+  let UserDetail = RoleDetails.UserData
+  console.log(UserDetail);
 
   const FormSubmit = () => {
 
@@ -28,6 +30,7 @@ export default function ClientForm() {
         ClientEmail: ClientEmail.current.value,
         ClientAmount: ClientAmount.current.value,
         ClientPhoneNumber: ClientPhoneNumber.current.value,
+        BelongsTo: UserDetail._id
       }
 
     }).then(response => {

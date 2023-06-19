@@ -189,7 +189,7 @@ export default function AdminDashboard() {
 
 
                         <WrapItem>
-                            <Stack w='180px' h='140px' backgroundColor="#8EB9BB" borderRadius={20}>
+                            <Stack w='195px' h='140px' backgroundColor="#8EB9BB" borderRadius={20}>
                                 <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={7} fontSize={19} fontWeight="bold" color="white">
                                     Total Cashiers
                                     <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">

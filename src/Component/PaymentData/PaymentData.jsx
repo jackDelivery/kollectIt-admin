@@ -22,7 +22,7 @@ export default function PaymentData() {
     let dueOnref = useRef();
 
     const UserCredentials = useContext(StoreContext);
-    
+
     useEffect(() => {
         axios({
             method: "post",
@@ -77,7 +77,7 @@ export default function PaymentData() {
         setOnData(e)
 
     }
-    console.log(OnData.imageUrl,"rrrrr");
+    console.log(OnData.imageUrl, "rrrrr");
     function handler(params) {
         console.log(dueOnref.current.value);
 
@@ -86,7 +86,7 @@ export default function PaymentData() {
             url: Url + "/UpdateFilteredPayments",
             data: {
                 "filter": {
-                    "_id":  OnData.ObjId
+                    "_id": OnData.ObjId
                 },
                 "update": {
                     "drawOn": drawOnref.current.value,
@@ -154,8 +154,8 @@ export default function PaymentData() {
                             <table id="myTable">
                                 <td>
                                     <img src={OnData.imageUrl} alt="Girl in a jacket" width="500rem" height="300"></img>
-                                    <th style={{ width: "40%" }}><input type="text" ref={drawOnref} placeholder={OnData.drawOn} /></th>
-                                    <th style={{ width: "40%" }}><input type="text" ref={dueOnref} placeholder={OnData.dueOn} /></th>
+                                    <th style={{ width: "40%" }}><input type="text" ref={drawOnref} placeholder={`Draw On ${OnData.drawOn}`} /></th>
+                                    <th style={{ width: "40%" }}><input type="text" ref={dueOnref} placeholder={`Due On ${OnData.dueOn}`} /></th>
                                     {/* <br />
                                     <th style={{ width: "40%" }}><input type="text" placeholder='PaymentMode' /></th>
                                     <th style={{ width: "40%" }}><input type="text" placeholder='status' /></th> */}
