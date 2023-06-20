@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Button, Modal } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { Url } from '../../Pages/Core';
-
+import moment from "moment";
 
 
 export default function QuotaList(data) {
@@ -52,7 +52,7 @@ export default function QuotaList(data) {
     return (
         <>
             <tr>
-                <td>{data.alldata.createdOn}</td>
+                <td>{moment(data.alldata.createdOn).format('llll')}</td>
                 <td>{data.alldata.Mode}</td>
                 <td>{data.alldata.Qty}</td>
                 {""}

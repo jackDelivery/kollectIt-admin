@@ -20,6 +20,7 @@ import Quota from '../../Component/Quota/Quota';
 import CashierDashboard from '../../Component/CashierDashboard/CashierDashboard';
 import AdminDashboard from '../../Component/AdminDashboard/AdminDashboard';
 import Kicon from '../Login/kollect-logo.png';
+import AddQuota from '../../Component/AddQuota/AddQuota';
 
 
 
@@ -82,7 +83,7 @@ export default function Dashboard() {
             Admin: 'Admin',
             key: '11',
             icon: <BranchesOutlined onClick={() => setTrigger(11)} />,
-            label: <div onClick={() => setTrigger(11)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Aysne Rider ' : ''}</span></div>,
+            label: <div onClick={() => setTrigger(11)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Assign Rider ' : ''}</span></div>,
         },
 
     ]
@@ -130,7 +131,7 @@ export default function Dashboard() {
             // Admin: 'Admin',
             key: '16',
             icon: <BranchesOutlined onClick={() => setTrigger(16)} />,
-            label: <div onClick={() => setTrigger(16)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Aysne Rider ' : ''}</span></div>,
+            label: <div onClick={() => setTrigger(16)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Assign Rider ' : ''}</span></div>,
         },
         {
             Cashier: "Cashier",
@@ -211,6 +212,13 @@ export default function Dashboard() {
         //     label: <div onClick={() => setTrigger(18)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'Admin Dashboard' : ''}</span></div>,
 
         // },
+        {
+            Admin: 'Admin',
+            key: '18',
+            icon: <UserAddOutlined onClick={() => setTrigger(18)} />,
+            label: <div onClick={() => setTrigger(18)}><span style={{ marginLeft: '5%' }}> {!collapsed ? 'AddQuota' : ''}</span></div>,
+
+        },
         {
             Cashier: "Cashier",
             Admin: 'Admin',
@@ -365,21 +373,19 @@ export default function Dashboard() {
                             <>
                                 <CashierDashboard />
                             </>
-                        )
-                            // : trigger === 18 ? (
-                            //     <>
-                            //         <AdminDashboard />
-                            //     </>
-                            // )
-                            : trigger === 19 ? (
-                                <>
-                                    <SMSleger />
-                                </>
-                            ) : (
-                                <>
-                                    Page Not Found
-                                </>
-                            )
+                        ) : trigger === 18 ? (
+                            <>
+                                <AddQuota />
+                            </>
+                        ) : trigger === 19 ? (
+                            <>
+                                <SMSleger />
+                            </>
+                        ) :
+
+                            <>
+                                Page Not Found
+                            </>
                     }
                 </Content>
             </Layout>

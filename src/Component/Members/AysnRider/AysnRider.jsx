@@ -137,7 +137,7 @@ export default function AysnRider() {
 
                 </div>
                 <div class="container mt-3">
-                    <h2>Aysne Rider</h2>
+                    <h2>Assign Rider</h2>
 
                     <table class="table table-hover">
                         <thead class="bg-light">
@@ -149,7 +149,7 @@ export default function AysnRider() {
                                 <th>Amount</th>
                                 {/* <th>Stutus</th> */}
                                 <th>Allow Rider Name</th>
-                                <th>Aysne Rider</th>
+                                <th>Assign Rider</th>
                             </tr>
                         </thead>
                         {Client.map((v, i) => {
@@ -193,7 +193,7 @@ export default function AysnRider() {
                                         {/* <th style={{ width: 60 }}>RiderId</th> */}
                                         <th style={{ width: 60 }}>Name</th>
                                         <th style={{ width: 60 }}>Number</th>
-                                        <th style={{ width: 60 }}>AysnRider</th>
+                                        <th style={{ width: 60 }}>Assign Rider</th>
                                     </tr>
                                     {allData.map((v, index) => {
                                         return (

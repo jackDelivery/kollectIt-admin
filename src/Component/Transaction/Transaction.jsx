@@ -6,6 +6,7 @@ import { useState, useContext } from "react";
 import { Url } from "../../Pages/Core";
 import './Transaction.css';
 import StoreContext from "../../ContextApi";
+import moment from "moment";
 
 
 export default function TransactionList() {
@@ -134,7 +135,7 @@ export default function TransactionList() {
                         {dataTras.map((v, i) => {
                             return (
                                 <tr>
-                                    <td>{v.createdOn}</td>
+                                    <td>{moment(v.createdOn).format('llll')}</td>
                                     <td>{v.Nature}</td>
                                     <td>{fromName}</td>
                                     <td>{toName}</td>
