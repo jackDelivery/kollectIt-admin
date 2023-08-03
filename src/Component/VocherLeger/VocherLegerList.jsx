@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Url } from "../../Pages/Core";
 import moment from "moment";
 
-export default function QuotaList(data) {
+export default function VoucherList(data) {
   const [employeeData, setemployeeData] = useState([]);
-  const [ClientData, setClientData] = useState([]);
+  const [Blance, setBlance] = useState(0);
   const [QuotaValue, setQuotaValue] = useState(null);
   // const [BelongsID, setBelongsID] = useState("")
   // const value = React.useMemo(() => updateValue(BelongsID), [BelongsID])
@@ -13,46 +13,48 @@ export default function QuotaList(data) {
   // console.log(data.alldata, "dataaaaa");
   // console.log(data.alldata.Sender, "Sender");
 
-  useEffect(() => {
-    axios({
-      method: "post",
-      url: Url + "/filteredEmployee",
-      data: {
-        filter: {
-          _id: data.alldata.Sender,
-        },
-      },
-    }).then((response) => {
-      // console.log(response.data, "Sender");
-      setemployeeData(response.data[0].employeeName);
-    });
-  }, []);
+  //   useEffect(() => {
+  //     axios({
+  //       method: "post",
+  //       url: Url + "/filteredEmployee",
+  //       data: {
+  //         filter: {
+  //           _id: data.alldata.Sender,
+  //         },
+  //       },
+  //     }).then((response) => {
+  //       // console.log(response.data, "Sender");
+  //       setemployeeData(response.data[0].employeeName);
+  //     });
+  //   }, []);
 
-  useEffect(() => {
-    axios({
-      method: "post",
-      url: Url + "/filteredClients",
-      data: {
-        filter: {
-          _id: data.alldata.Reciver,
-        },
-      },
-    }).then((response) => {
-      setClientData(response.data[0].ClientName);
-    });
-  }, []);
+  //   useEffect(() => {
+  //     axios({
+  //       method: "post",
+  //       url: Url + "/filteredClients",
+  //       data: {
+  //         filter: {
+  //           _id: data.alldata.Reciver,
+  //         },
+  //       },
+  //     }).then((response) => {
+  //       setClientData(response.data[0].ClientName);
+  //     });
+  //   }, []);
 
-  console.log(ClientData, "filter Clients===> Reciver");
-
+  //   console.log(ClientData, "filter Clients===> Reciver");
+  console.log(data.alldata.Amount, Blance);
   return (
     <>
       <tr>
         <td>{moment(data.alldata.createdOn).format("llll")}</td>
+        <td>{data.alldata.Description}</td>
         <td>{data.alldata.Mode}</td>
-        <td>{data.alldata.Qty}</td>
+        <td>{data.alldata.Amount}</td>
+
         {/* {employeeData.map((v, i) => { return (<td>{v.employeeName}</td>) })} */}
-        <td>{employeeData}</td>
-        <td>{ClientData}</td>
+        {/* <td>{employeeData}</td>
+        <td>{ClientData}</td> */}
         {/* {ClientData.map((v, i) => { return (<td>{v.ClientName}</td>) })}  */}
       </tr>
 

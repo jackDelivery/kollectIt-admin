@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Url } from '../../Pages/Core'
 import axios from 'axios';
 import SMSlegerList from './SMSlegerList';
@@ -10,7 +10,7 @@ export default function SMSleger() {
 
     const [allData, setallData] = useState([])
     const UserCredentials = useContext(StoreContext);
-    const [refresher, setRefresher] = useState(false);
+    // const [refresher, setRefresher] = useState(false);
     const [BelongsID, setBelongsID] = useState(UserCredentials.UserData.Role)
     let ID = UserCredentials.UserData._id
     console.log(UserCredentials.UserData, "UserCredentials");
