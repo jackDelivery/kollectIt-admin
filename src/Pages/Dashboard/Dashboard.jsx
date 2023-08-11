@@ -18,6 +18,7 @@ import {
   Riders,
   AysnRider,
   SMSleger,
+  AddPayment,
 } from "../../Component/index";
 import {
   MenuUnfoldOutlined,
@@ -96,12 +97,12 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(9)}>
           <span style={{ marginLeft: "5%" }}>
-            {" "}
             {!collapsed ? "Cashier" : ""}
           </span>
         </div>
       ),
     },
+
     {
       Cashier: "Cashier",
       Admin: "Admin",
@@ -109,10 +110,7 @@ export default function Dashboard() {
       icon: <DingtalkOutlined onClick={() => setTrigger(10)} />,
       label: (
         <div onClick={() => setTrigger(10)}>
-          <span style={{ marginLeft: "5%" }}>
-            {" "}
-            {!collapsed ? "Riders" : ""}
-          </span>
+          <span style={{ marginLeft: "5%" }}>{!collapsed ? "Riders" : ""}</span>
         </div>
       ),
     },
@@ -124,7 +122,6 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(11)}>
           <span style={{ marginLeft: "5%" }}>
-            {" "}
             {!collapsed ? "Assign Rider " : ""}
           </span>
         </div>
@@ -173,9 +170,7 @@ export default function Dashboard() {
       icon: <FormOutlined onClick={() => setTrigger(2)} />,
       label: (
         <div onClick={() => setTrigger(2)}>
-          {" "}
           <span style={{ marginLeft: "5%" }}>
-            {" "}
             {!collapsed ? "Add Client" : ""}
           </span>
         </div>
@@ -189,7 +184,6 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(16)}>
           <span style={{ marginLeft: "5%" }}>
-            {" "}
             {!collapsed ? "Assign Rider " : ""}
           </span>
         </div>
@@ -204,6 +198,18 @@ export default function Dashboard() {
         <div onClick={() => setTrigger(3)}>
           <span style={{ marginLeft: "5%" }}>
             {!collapsed ? "View Client" : ""}
+          </span>
+        </div>
+      ),
+    },
+    {
+      Admin: "Admin",
+      key: "21",
+      icon: <DollarCircleOutlined onClick={() => setTrigger(21)} />,
+      label: (
+        <div onClick={() => setTrigger(21)}>
+          <span style={{ marginLeft: "5%" }}>
+            {!collapsed ? "AddPayment" : ""}
           </span>
         </div>
       ),
@@ -272,7 +278,6 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(12)}>
           <span style={{ marginLeft: "5%" }}>
-            {" "}
             {!collapsed ? "Transaction" : ""}
           </span>
         </div>
@@ -292,7 +297,6 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(6)}>
           <span style={{ marginLeft: "5%" }}>
-            {" "}
             {!collapsed ? "Add Member" : ""}
           </span>
         </div>
@@ -313,7 +317,6 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(18)}>
           <span style={{ marginLeft: "5%" }}>
-            {" "}
             {!collapsed ? "AddQuota" : ""}
           </span>
         </div>
@@ -326,7 +329,6 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(20)}>
           <span style={{ marginLeft: "5%" }}>
-            {" "}
             {!collapsed ? "VocherLeger" : ""}
           </span>
         </div>
@@ -340,7 +342,6 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(19)}>
           <span style={{ marginLeft: "5%" }}>
-            {" "}
             {!collapsed ? "SMS Leger" : ""}
           </span>
         </div>
@@ -354,7 +355,6 @@ export default function Dashboard() {
       label: (
         <div onClick={() => logout()}>
           <span style={{ marginLeft: "5%" }}>
-            {" "}
             {!collapsed ? " Log Out" : ""}
           </span>
         </div>
@@ -497,6 +497,10 @@ export default function Dashboard() {
           ) : trigger === 20 ? (
             <>
               <VocherLeger />
+            </>
+          ) : trigger === 21 ? (
+            <>
+              <AddPayment />
             </>
           ) : (
             <>Page Not Found</>

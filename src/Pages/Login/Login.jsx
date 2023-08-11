@@ -92,7 +92,7 @@ function Login() {
             <h1 className="text-center" style={{ color: "#427d8f" }}>
               Sign In
             </h1>
-            <Form>
+            <Form onSubmit={!isLoading ? handleClick : null}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
@@ -119,8 +119,10 @@ function Login() {
                 style={{ backgroundColor: "#427d8f" }}
                 disabled={isLoading}
                 onClick={!isLoading ? handleClick : null}
+                type="submit"
               >
-                {isLoading ? "Loading…" : "Click to Login"}
+                Submit
+                {/* {isLoading ? "Loading…" : "Click to Login"} */}
               </Button>
             </Form>
           </Col>
