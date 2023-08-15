@@ -72,8 +72,9 @@ export default function AddQuotaList(data) {
     console.log(e.target.ariaLabel, "sss");
     axios({
       method: "post",
-      //   url: Url + "/UpdateCrediteBlance",
-      url: "http://localhost:5000/AddCredit",
+        // url: Url + "/UpdateCrediteBlance",
+        url: Url + "/AddCredit",
+      // url: "http://localhost:5000/AddCredit",
       data: {
         BelongsTo: e.target.ariaLabel,
         amount: Number(CreditValue),

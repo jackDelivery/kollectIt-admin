@@ -74,8 +74,8 @@ export default function QuotaList(data) {
     console.log(e.target.ariaLabel, "sss");
     axios({
       method: "post",
-      //   url: Url + "/UpdateCrediteBlance",
-      url: "http://localhost:5000/UpdateCrediteBlance",
+        url: Url + "/UpdateCrediteBlance",
+      // url: "http://localhost:5000/UpdateCrediteBlance",
       data: {
         BelongsTo: e.target.ariaLabel,
         amount: CreditValue,

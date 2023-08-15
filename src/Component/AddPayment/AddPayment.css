@@ -1,62 +1,73 @@
-#backColor{
+#backColor {
   /* background: linear-gradient(to right, rgba(235,224,232,1) 52%,rgba(254,191,1,1) 53%,rgba(254,191,1,1) 100%); */
-background-color:  rgba(235,224,232,1) ;
+  background-color: rgba(235, 224, 232, 1);
+}
+.box-right {
+  padding: 30px 25px;
+  background-color: white;
+  border-radius: 15px;
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-
-body{
-background: linear-gradient(to right, rgba(235,224,232,1) 52%,rgba(254,191,1,1) 53%,rgba(254,191,1,1) 100%);
-font-family: 'Roboto', sans-serif;
+.textmuted {
+  color: #7a7a7a;
 }
 
-.card{
-	border: none;
-	max-width: 450px;
-	border-radius: 15px;
-	margin: 150px 0 150px;
-	padding: 35px;
-	padding-bottom: 20px!important;
+.bg-green {
+  background-color: #d4f8f2;
+  color: #06e67a;
+  padding: 3px 0;
+  display: inline;
+  border-radius: 25px;
+  font-size: 11px;
 }
-.heading{
-	color: #C1C1C1;
-	font-size: 14px;
-	font-weight: 500;
-}
-img{
-	transform: translate(160px,-10px);
-}
-img:hover{
-    cursor: pointer;
-}
-.text-warning{
-	font-size: 12px;
-	font-weight: 500;
-	color: #edb537!important;
-}
-#cno{
-	transform: translateY(-10px);
-}
-input{
-	border-bottom: 1.5px solid #E8E5D2!important;
-	font-weight: bold;
-	border-radius: 0;
-	border: 0;
 
+.p-blue {
+  font-size: 14px;
+  color: #1976d2;
 }
-.form-group input:focus{
-	border: 0;
-	outline: 0;
+
+.fas.fa-circle {
+  font-size: 12px;
 }
-.col-sm-5{
-	padding-left: 90px;
+
+.p-org {
+  font-size: 14px;
+  color: #fbc02d;
 }
-.btn{
-	background: #F3A002!important;
-	border: none;
-	border-radius: 30px;
+
+.h7 {
+  font-size: 15px;
 }
-.btn:focus{
-    box-shadow: none;
-} */
+
+.h8 {
+  font-size: 12px;
+}
+
+.text-warning {
+  /* font-size: 12px;
+	font-weight: 500; */
+  color: #edb537 !important;
+  text-align: start;
+}
+
+input {
+  border-bottom: 1.5px solid #e8e5d2 !important;
+  font-weight: bold;
+  border-radius: 0;
+  border: 0;
+}
+.form-group input:focus {
+  border: 0;
+  outline: 0;
+}
+.col-sm-5 {
+  padding-left: 90px;
+}
+.btn {
+  background: #f3a002 !important;
+  border: none;
+  border-radius: 30px;
+}
+.btn:focus {
+  box-shadow: none;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-// import { Url } from "../../Pages/Core";
+import { Url } from "../../Pages/Core";
 import axios from "axios";
 import VocherLegerList from "./VocherLegerList";
 import StoreContext from "../../ContextApi";
@@ -8,7 +8,7 @@ export default function VocherLeger() {
   const [prevBalance, setPrevBalance] = useState(0);
   const [allData, setallData] = useState([]);
   const UserCredentials = useContext(StoreContext);
-  let Url = "http://localhost:5000";
+  // let Url = "http://localhost:5000";
   //   const [BelongsID, setBelongsID] = useState(UserCredentials.UserData.Role);
   //   const [refresher, setRefresher] = useState(false);
   //   let ID = UserCredentials.UserData._id;
