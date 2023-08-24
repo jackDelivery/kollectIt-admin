@@ -50,7 +50,7 @@ export default function VocherLeger() {
   return (
     <>
       <div class="card card-cascade narrower">
-        <div class="container mt-3">
+        <div class="container mt-3 overflow-auto" style={{ maxHeight: "110vh" }}>
           <h2>Vocher Leger</h2>
 
           <table class="table table-hover">

@@ -56,7 +56,7 @@ export default function SMSleger() {
     return (
         <>
             <div class="card card-cascade narrower">
-                <div class="container mt-3">
+                <div class="container mt-3 overflow-auto" style={{ maxHeight: "110vh" }}>
                     <h2>SMS Leger</h2>
 
                     <table class="table table-hover">

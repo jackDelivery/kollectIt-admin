@@ -1,33 +1,32 @@
-import axios from 'axios';
-import React, { useEffect, useRef, useState,useContext } from 'react';
-import { Url } from '../../../Pages/Core';
-import StoreContext from '../../../ContextApi';
+import axios from "axios";
+import React, { useEffect, useRef, useState, useContext } from "react";
+import { Url } from "../../../Pages/Core";
+import StoreContext from "../../../ContextApi";
 
 export default function Cashers() {
-
-  const [allData, setallData] = useState([])
+  const [allData, setallData] = useState([]);
   const UserCredentials = useContext(StoreContext);
-// console.log(UserCredentials.UserData);
+  // console.log(UserCredentials.UserData);
 
   useEffect(() => {
     axios({
       method: "post",
-      url: Url + '/filteredEmployee',
-      data:{
-        filter:{
-          "createdBy": UserCredentials.UserData._id,
-          "Role":"Cashier"
-        }
-      }
+      url: Url + "/filteredEmployee",
+      data: {
+        filter: {
+          createdBy: UserCredentials.UserData._id,
+          Role: "Cashier",
+        },
+      },
     }).then((response) => {
-      console.log(response.data,"response")
-      setallData(response.data)
-    })
-  }, [])
+      console.log(response.data, "response");
+      setallData(response.data);
+    });
+  }, []);
 
   return (
     <div class="card card-cascade narrower">
-      <div class="container mt-3">
+      <div class="container mt-3 overflow-auto" style={{ maxHeight: "110vh" }}>
         <h2>Cashiers</h2>
 
         <table class="table table-hover">
@@ -49,13 +48,18 @@ export default function Cashers() {
                   <td>{v.employeeEmail}</td>
                   <td>{v.employeePassword}</td>
                   <td>
-                    <span class="badge badge-success rounded-pill d-inline">Active</span>
+                    <span class="badge badge-success rounded-pill d-inline">
+                      Active
+                    </span>
                   </td>
                   <td>Senior</td>
-                  <td><button  class="btn btn-warning btn-rounded">{v.Role}</button></td>
+                  <td>
+                    <button class="btn btn-warning btn-rounded">
+                      {v.Role}
+                    </button>
+                  </td>
                 </tr>
-
-              )
+              );
             })}
             {/* <tr>
               <td>Mary</td>
@@ -81,5 +85,5 @@ export default function Cashers() {
         </table>
       </div>
     </div>
-  )
+  );
 }

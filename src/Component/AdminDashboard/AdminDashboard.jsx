@@ -178,9 +178,9 @@ export default function AdminDashboard() {
                     <Wrap spacing='50px'>
                         <WrapItem>
                             <Stack w='180px' h='140px' backgroundColor="#8EB9BB" borderRadius={20}>
-                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={7} fontSize={20} fontWeight="bold" color="white">
+                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={5} fontSize={20} fontWeight="bold" color="white">
                                     Total Clients
-                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
+                                    <Text mt={7} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
                                         {Client}
                                     </Text>
                                 </Text>
@@ -190,10 +190,10 @@ export default function AdminDashboard() {
 
                         <WrapItem>
                             <Stack w='195px' h='140px' backgroundColor="#8EB9BB" borderRadius={20}>
-                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={7} fontSize={19} fontWeight="bold" color="white">
+                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={5} fontSize={19} fontWeight="bold" color="white">
                                     Total Cashiers
-                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
-                                        {Employee.TotalCashier}
+                                    <Text mt={7} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
+                                        {Employee.TotalCashier }
                                     </Text>
                                 </Text>
                             </Stack>
@@ -201,9 +201,9 @@ export default function AdminDashboard() {
 
                         <WrapItem>
                             <Stack w='180px' h='140px' backgroundColor="#8EB9BB" borderRadius={20}>
-                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={7} fontSize={20} fontWeight="bold" color="white">
+                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={5} fontSize={20} fontWeight="bold" color="white">
                                     Total Riders
-                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
+                                    <Text mt={7} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
                                         {Employee.TotalRider}
                                     </Text>
                                 </Text>
@@ -212,10 +212,11 @@ export default function AdminDashboard() {
 
                         <WrapItem>
                             <Stack w='180px' h='140px' backgroundColor="#8EB9BB" borderRadius={20}>
-                                <Text h='70px' backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={7} fontSize={20} fontWeight="bold" color="white">
+                                <Text h='70px'  backgroundColor="#427D8F" borderTopRadius={20} textAlign="center" p={5} fontSize={20} fontWeight="bold" color="white">
                                     Transactions
-                                    <Text mt={4} borderBottomRadius={10} textAlign="center" fontSize={30} fontWeight="bold" color="#427D8F">
-                                        {PaymentData.totalAmount}
+                                    <Text mt={7} borderBottomRadius={10} textAlign="center" fontSize={25} fontWeight="bold" color="#427D8F">
+                                        {PaymentData.totalAmount?<>{PaymentData.totalAmount}</>:<>{PaymentData.TotalCheqAmount}</>}
+                                        {/* {PaymentData.totalAmount} */}
                                     </Text>
                                 </Text>
                             </Stack>

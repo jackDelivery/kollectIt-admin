@@ -389,7 +389,12 @@ export default function Dashboard() {
         minHeight: "100vh",
       }}
     >
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+        // style={{ position: "fixed",zIndex:1 }}
+      >
         {/* <div className="logo"> */}
         <img src={Kicon} />
         {/* </div> */}
@@ -423,6 +428,7 @@ export default function Dashboard() {
             margin: "24px 16px",
             padding: 24,
             minHeight: "80vh",
+            // maxHeight: "100vh",
           }}
         >
           {trigger === 1 ? (

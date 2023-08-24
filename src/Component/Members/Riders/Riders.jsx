@@ -1,43 +1,38 @@
-import axios from 'axios';
-import React, { useEffect, useContext, useState } from 'react';
-import { Url } from '../../../Pages/Core';
-import StoreContext from '../../../ContextApi';
-
-
-
-
-
+import axios from "axios";
+import React, { useEffect, useContext, useState } from "react";
+import { Url } from "../../../Pages/Core";
+import StoreContext from "../../../ContextApi";
 
 export default function Riders() {
-
   const [allData, setallData] = useState([]);
   const UserCredentials = useContext(StoreContext);
-
 
   useEffect(() => {
     axios({
       method: "post",
-      url: Url + '/filteredEmployee',
+      url: Url + "/filteredEmployee",
       data: {
         filter: {
-          "createdBy": UserCredentials.UserData._id,
-          "Role": "Rider"
-        }
-      }
+          createdBy: UserCredentials.UserData._id,
+          Role: "Rider",
+        },
+      },
     }).then((response) => {
-      console.log(response.data, "response")
-      setallData(response.data)
-    })
-  }, [])
-
+      console.log(response.data, "response");
+      setallData(response.data);
+    });
+  }, []);
 
   return (
     <div class="card card-cascade narrower">
-      <div class="container mt-3">
+      <div class="container mt-3 overflow-auto" style={{ maxHeight: "110vh" }}>
         <h2>Riders</h2>
 
-        <table class="table table-hover">
-          <thead class="bg-light">
+        <table class="table table-hover" style={{position:'relative'}}>
+          <thead
+            class="bg-light"
+            // style={{ position: "fixed",width:"100%" }}
+          >
             <tr>
               <th>Rider Name</th>
               <th>Email</th>
@@ -55,13 +50,18 @@ export default function Riders() {
                   <td>{v.employeeEmail}</td>
                   <td>{v.employeePassword}</td>
                   <td>
-                    <span class="badge badge-success rounded-pill d-inline">Active</span>
+                    <span class="badge badge-success rounded-pill d-inline">
+                      Active
+                    </span>
                   </td>
                   <td>Senior</td>
-                  <td><button class="btn btn-primary btn-rounded">{v.Role}</button></td>
+                  <td>
+                    <button class="btn btn-primary btn-rounded">
+                      {v.Role}
+                    </button>
+                  </td>
                 </tr>
-
-              )
+              );
             })}
             {/* <tr>
               <td>Mary</td>
@@ -83,9 +83,20 @@ export default function Riders() {
               </td>
               <td>Senior</td>
             </tr> */}
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </tbody>
         </table>
       </div>
     </div>
-  )
+  );
 }
