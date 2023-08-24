@@ -18,7 +18,7 @@ import {
   Riders,
   AysnRider,
   SMSleger,
-  AddPayment,
+  AddBlance,
 } from "../../Component/index";
 import {
   MenuUnfoldOutlined,
@@ -209,7 +209,7 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(21)}>
           <span style={{ marginLeft: "5%" }}>
-            {!collapsed ? "AddPayment" : ""}
+            {!collapsed ? "Add Balance" : ""}
           </span>
         </div>
       ),
@@ -317,8 +317,8 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(18)}>
           <span style={{ marginLeft: "5%" }}>
-            {!collapsed ? "AddQuota" : ""}
-          </span>
+            {!collapsed ? "Add Quota" : ""}
+          </span> 
         </div>
       ),
     },
@@ -329,7 +329,7 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(20)}>
           <span style={{ marginLeft: "5%" }}>
-            {!collapsed ? "VocherLeger" : ""}
+            {!collapsed ? "Voucher Ledger" : ""}
           </span>
         </div>
       ),
@@ -342,7 +342,7 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(19)}>
           <span style={{ marginLeft: "5%" }}>
-            {!collapsed ? "SMS Leger" : ""}
+            {!collapsed ? "SMS Ledger" : ""}
           </span>
         </div>
       ),
@@ -506,7 +506,7 @@ export default function Dashboard() {
             </>
           ) : trigger === 21 ? (
             <>
-              <AddPayment />
+              <AddBlance />
             </>
           ) : (
             <>Page Not Found</>

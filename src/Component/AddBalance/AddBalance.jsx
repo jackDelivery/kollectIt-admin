@@ -1,18 +1,17 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import "./AddPayment.css";
+import "./AddBlance.css";
 import axios from "axios";
 import { Url } from "../../Pages/Core";
 import StoreContext from "../../ContextApi";
 
-export default function AddPayment() {
+export default function AddBalance() {
   const UserCredentials = useContext(StoreContext);
-  const [targetAmount, settargetAmount] = useState("");
+  const [CreditBalance, setCreditBalance] = useState("");
   const [PaymentAmount, setPaymentAmount] = useState("");
-  // console.log(allData, "allData");
 
   // let = useRef()
   // let = useRef()
-  console.log(PaymentAmount,"PaymentAmount");
+  // console.log(PaymentAmount, "PaymentAmount");
   let JazzMobiNum = useRef();
   let JazzCNIC = useRef();
 
@@ -21,7 +20,6 @@ export default function AddPayment() {
   let CreditMonth = useRef();
   let CreditYear = useRef();
   let CreditCvv = useRef();
-
   function JazzCashHandler(e) {
     // e.preventdefault();
     let body = {
@@ -43,15 +41,37 @@ export default function AddPayment() {
     console.log(body, "Credit Card");
   }
 
+  useEffect(() => {
+    // setreloadData(false)
+
+    axios({
+      method: "post",
+      url: Url + "/filteredQuota",
+      data: {
+        filter: {
+          BelongsTo: UserCredentials.UserData._id,
+        },
+      },
+    }).then((response) => {
+      console.log(response.data, "=================>allData");
+      setCreditBalance(response.data);
+    });
+  }, []);
+
+  // console.log();
   return (
     <div>
       <div class="col-12 mb-4">
         <div class="row box-right">
           <div class="col-md-4 ps-0 ">
-            <p class="ps-3 textmuted fw-bold h6 mb-0">Your Blance</p>
+            <p class="ps-3 textmuted fw-bold h6 mb-0">Your Balance</p>
             <p class="h1 fw-bold d-flex">
               <span class=" fas fa-dollar-sign textmuted pe-1 h6 align-text-top mt-1"></span>
-              00
+              {CreditBalance[0] ? (
+                <>{CreditBalance[0].CreditBalance}</>
+              ) : (
+                <>00</>
+              )}
               <span class="textmuted">.00</span>
             </p>
             <p class="ms-3 px-2 bg-green">+10% since last month</p>
@@ -68,7 +88,6 @@ export default function AddPayment() {
               maxlength="19"
               onChange={(e) => setPaymentAmount(e.target.value)}
             />
-
           </div>
           <div class="col-md-4 mt-2">
             <button type="button" class="btn btn-primary mt-4">

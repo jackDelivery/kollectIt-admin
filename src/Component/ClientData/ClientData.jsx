@@ -1,13 +1,22 @@
-import React, { useEffect, useState, useContext } from "react";
-import { MDBDataTableV5 } from "mdbreact";
+import React, { useEffect, useState, useContext, useRef } from "react";
+import StoreContext from "../../ContextApi";
+import { Url } from "../../Pages/Core";
+import { CSVLink } from "react-csv";
 import "./ClientData.css";
 import axios from "axios";
-import { Url } from "../../Pages/Core";
-import StoreContext from "../../ContextApi";
 
 export default function ClientData() {
   const [allData, setallData] = useState([]);
   const UserCredentials = useContext(StoreContext);
+  const csvLinkEl = useRef(null);
+
+  const headers = [
+    { label: "ClientId", key: "ClientId" },
+    { label: "Name", key: "ClientName" },
+    { label: "Number", key: "ClientPhoneNumber" },
+    { label: "Email", key: "ClientEmail" },
+    { label: "Amount", key: "ClientAmount" },
+  ];
 
   useEffect(() => {
     if (UserCredentials.UserData.Role === "Admin") {
@@ -57,8 +66,33 @@ export default function ClientData() {
       }
     }
   }
+
+  const downloadReport = async () => {
+    setTimeout(() => {
+      csvLinkEl.current.link.click();
+    });
+  };
+
   return (
     <div>
+      <CSVLink
+        headers={headers}
+        filename="Client Data.csv"
+        data={allData}
+        ref={csvLinkEl}
+      />
+      <h1 className="text-center">Client List</h1>
+      <div className="d-flex flex-row-reverse m-2">
+        <button
+          class="btn text-white"
+          style={{ background: "#427D8F", fontSize: 15, marginTop: "-3%", padding:10}}
+          onClick={downloadReport}
+          role="button"
+        >
+          Export
+          <i class="far fa-circle-down mx-2 "></i>
+        </button>
+      </div>
       <input
         type="text"
         id="myInput"

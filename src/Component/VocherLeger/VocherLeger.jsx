@@ -1,13 +1,24 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Url } from "../../Pages/Core";
-import axios from "axios";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import VocherLegerList from "./VocherLegerList";
 import StoreContext from "../../ContextApi";
+import { Url } from "../../Pages/Core";
+import { CSVLink } from "react-csv";
+import moment from "moment";
+import axios from "axios";
 
 export default function VocherLeger() {
   const [prevBalance, setPrevBalance] = useState(0);
   const [allData, setallData] = useState([]);
   const UserCredentials = useContext(StoreContext);
+  const csvLinkEl = useRef(null);
+
+  const headers = [
+    { label: "Date", key: "createdOn" },
+    { label: "Description", key: "Description" },
+    { label: "Mode", key: "Mode" },
+    { label: "Amount	", key: "Amount" },
+    // { label: "Balance", key: "PaymentAmount" },
+  ];
   // let Url = "http://localhost:5000";
   //   const [BelongsID, setBelongsID] = useState(UserCredentials.UserData.Role);
   //   const [refresher, setRefresher] = useState(false);
@@ -47,11 +58,37 @@ export default function VocherLeger() {
     }
   }, []);
 
+  const downloadReport = async () => {
+    setTimeout(() => {
+      csvLinkEl.current.link.click();
+    });
+  };
+
   return (
     <>
       <div class="card card-cascade narrower">
-        <div class="container mt-3 overflow-auto" style={{ maxHeight: "110vh" }}>
+        <div
+          class="container mt-3 overflow-auto"
+          style={{ maxHeight: "110vh" }}
+        >
           <h2>Vocher Leger</h2>
+          <CSVLink
+            headers={headers}
+            filename="VocherLeger List.csv"
+            data={allData}
+            ref={csvLinkEl}
+          />
+          <div className="d-flex flex-row-reverse m-2">
+            <button
+              class="btn text-white"
+              style={{ background: "#427D8F", fontSize: 15 }}
+              onClick={downloadReport}
+              role="button"
+            >
+              Export
+              <i class="far fa-circle-down mx-2 "></i>
+            </button>
+          </div>
 
           <table class="table table-hover">
             <thead class="bg-light">
@@ -60,13 +97,22 @@ export default function VocherLeger() {
                 <th>Description</th>
                 <th>Mode</th>
                 <th>Amount</th>
-                <th>Balance</th>
+                {/* <th>Balance</th> */}
               </tr>
             </thead>
             <tbody>
-              {allData.map((v) => (
-                <VocherLegerList alldata={v} />
-              ))}
+              {allData.map((v) => {
+                // <VocherLegerList alldata={v} />
+
+                return (
+                  <tr>
+                    <td>{moment(v.createdOn).format("llll")}</td>
+                    <td>{v.Description}</td>
+                    <td>{v.Mode}</td>
+                    <td>{v.Amount}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

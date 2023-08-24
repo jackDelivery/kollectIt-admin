@@ -1,8 +1,7 @@
-import axios from "axios";
-import { Button, Modal } from "antd";
-import React, { useEffect, useState } from "react";
-import { Url } from "../../Pages/Core";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import { Url } from "../../Pages/Core";
 
 export default function AddQuotaList(data) {
   const [allData, setallData] = useState([]);
@@ -12,6 +11,13 @@ export default function AddQuotaList(data) {
   const value = React.useMemo(() => updateValue(BelongsID), [BelongsID]);
   const value1 = React.useMemo(() => updateValue(BelongsID), [BelongsID]);
   const [realTime, setRealTime] = useState(true);
+
+  const headers = [
+    { label: "Admin Name", key: "employeeName" },
+    { label: "Email", key: "employeeEmail" },
+    { label: "Limit", key: "Limit" },
+    { label: "Credit Blance", key: "CreditBalance" },
+  ];
 
   useEffect(() => {
     // setreloadData(false)
@@ -31,8 +37,8 @@ export default function AddQuotaList(data) {
   const createBelongsID = (v) => {
     setBelongsID(v.BelongsTo);
   };
-  const notify = () =>
-    toast.success("Add Quota Successfully!", {
+  const notify = (message) =>
+    toast.success(`Add ${message} Successfully!`, {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -63,6 +69,7 @@ export default function AddQuotaList(data) {
       // if (response.data.message == "Limit Update") {
       //     console.log(';kjk')
       // }
+      notify("Quota");
       console.log(response);
       setRealTime(!realTime);
     });
@@ -83,9 +90,10 @@ export default function AddQuotaList(data) {
       // if (response.data.message == "Limit Update") {
       //     console.log(';kjk')
       // }
-      notify();
+
       console.log(response);
       setRealTime(!realTime);
+      notify("Credit");
     });
   };
 
@@ -109,6 +117,7 @@ export default function AddQuotaList(data) {
                   data-toggle="modal"
                   data-target="#myModal"
                   onClick={() => createBelongsID(v)}
+                  style={{ width: "19vh" }}
                 >
                   Add Quota
                 </button>
@@ -120,6 +129,7 @@ export default function AddQuotaList(data) {
                   data-toggle="modal"
                   data-target="#myCredit"
                   onClick={() => createBelongsID(v)}
+                  style={{ width: "19vh" }}
                 >
                   Add Credit
                 </button>
@@ -168,7 +178,6 @@ export default function AddQuotaList(data) {
                 class="btn btn-success close"
                 data-dismiss="modal"
               >
-                {" "}
                 SUMBIT
               </button>
               {/* <button type="button" onClick={handleSubmit} value={value} class="btn btn-success close">Submit</button> */}
@@ -217,7 +226,6 @@ export default function AddQuotaList(data) {
                 class="btn btn-success close"
                 data-dismiss="modal"
               >
-                {" "}
                 SUMBIT
               </button>
               {/* <button type="button" onClick={handleSubmit} value={value} class="btn btn-success close">Submit</button> */}

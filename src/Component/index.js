@@ -12,6 +12,6 @@ export { default as Cards } from "./Cards/Cards";
 export { default as TransactionList } from "./Transaction/Transaction";
 export { default as SMSleger } from "./SMSleger/SMSleger";
 export { default as VocherLeger } from "./VocherLeger/VocherLeger";
-export { default as AddPayment } from "./AddPayment/AddPayment";
+export { default as AddBlance } from "./AddBalance/AddBalance";
 // export { default as  } from "";
 

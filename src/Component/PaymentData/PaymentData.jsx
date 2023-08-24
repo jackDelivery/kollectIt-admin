@@ -1,19 +1,29 @@
-import React, { useRef, useContext, useEffect } from "react";
-import { MDBDataTableV5 } from "mdbreact";
-import { useState } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
+import StoreContext from "../../ContextApi";
+import { Url } from "../../Pages/Core";
+import { CSVLink } from "react-csv";
 import "./PaymentData.css";
 import axios from "axios";
-import { Url } from "../../Pages/Core";
-import StoreContext from "../../ContextApi";
 
 export default function PaymentData() {
   const [allData, setallData] = useState([]);
+  const [OnData, setOnData] = useState("");
   const [realTime, setRealTime] = useState(true);
   const [ObjId, setObjId] = useState("");
-  const [OnData, setOnData] = useState("");
+  const [Imagelink, setImagelink] = useState([]);
+  const csvLinkEl = useRef(null);
+
+  const headers = [
+    { label: "Verify.Code", key: "VerificationCode" },
+    { label: "Name", key: "PaymentName" },
+    { label: "Draw On", key: "drawOn" },
+    { label: "Payment Status", key: "PaymentStatus" },
+    { label: "Due On", key: "dueOn" },
+    { label: "Image", key: "imageUrl" },
+    { label: "Staus", key: "status" },
+  ];
   // const [DueOn, setDueOn] = useState("");
   // const [DownOn, setDownOn] = useState("");
-  const [Imagelink, setImagelink] = useState([]);
 
   let drawOnref = useRef();
   let dueOnref = useRef();
@@ -72,8 +82,9 @@ export default function PaymentData() {
     // setObjId(e._id)
     setOnData(e);
   }
-  console.log(OnData.imageUrl, "rrrrr");
-  function handler(params) {
+  // console.log(OnData.imageUrl, "rrrrr");
+
+  function handler() {
     console.log(dueOnref.current.value);
 
     axios({
@@ -96,8 +107,34 @@ export default function PaymentData() {
       .catch((error) => [console.log(error, "error")]);
   }
 
+  const downloadReport = async () => {
+    setTimeout(() => {
+      csvLinkEl.current.link.click();
+    });
+  };
+
   return (
     <div>
+  
+
+      <CSVLink
+        headers={headers}
+        filename="Payment Data.csv"
+        data={allData}
+        ref={csvLinkEl}
+      />
+         <h1 className="text-center">Payment List</h1>
+      <div className="d-flex flex-row-reverse m-2">
+        <button
+          class="btn text-white"
+          style={{ background: "#427D8F", fontSize: 15, marginTop: "-3%", padding:10}}
+          onClick={downloadReport}
+          role="button"
+        >
+          Export
+          <i class="far fa-circle-down mx-2 "></i>
+        </button>
+      </div>
       <input
         type="text"
         id="myInput"
