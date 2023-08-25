@@ -27,7 +27,7 @@ export default function SMSleger() {
                 url: Url + '/smsLedger',
                 data: {
                     "filter": {
-                        "belongTo": UserCredentials.UserData._id
+                        "BelongsTo": UserCredentials.UserData._id
                     }
                 }
             }).then((response) => {

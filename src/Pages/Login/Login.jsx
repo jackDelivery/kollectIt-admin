@@ -50,7 +50,7 @@ function Login() {
       method: "post",
       url: Url + "/auth/login",
       data: {
-        email: email.current.value,
+        loginId: email.current.value,
         password: password.current.value,
       },
     })
@@ -96,7 +96,7 @@ function Login() {
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
-                  type="email"
+                  type="text"
                   placeholder="Enter email"
                   ref={email}
                 />

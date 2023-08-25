@@ -30,7 +30,7 @@ export default function TransactionList() {
       url: Url + "/auth/filterTransaction",
       data: {
         filter: {
-          BelongTo: UserCredentials.UserData._id,
+          BelongsTo: UserCredentials.UserData._id,
         },
       },
     })

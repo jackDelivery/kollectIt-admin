@@ -114,7 +114,7 @@ export default function ClientData() {
               <tr>
                 <td>{v.ClientId}</td>
                 <td>{v.ClientName}</td>
-                <td>{v.ClientPhoneNumber}</td>
+                <td>+{v.ClientPhoneNumber}</td>
                 <td>{v.ClientEmail}</td>
                 <td>{v.ClientAmount}</td>
               </tr>

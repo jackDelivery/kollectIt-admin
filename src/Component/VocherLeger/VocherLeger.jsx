@@ -33,8 +33,8 @@ export default function VocherLeger() {
         url: Url + "/filteredVoucher",
         data: {
           filter: {
-            // BelongsTo: UserCredentials.UserData._id,
-            BelongsTo: "63db55cf07ec951109a359c7",
+            BelongsTo: UserCredentials.UserData._id,
+            // BelongsTo: "63db55cf07ec951109a359c7",
           },
         },
       }).then((response) => {

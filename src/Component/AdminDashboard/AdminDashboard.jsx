@@ -133,7 +133,7 @@ export default function AdminDashboard() {
       url: Url + "/auth/filterTransaction",
       data: {
         filter: {
-          BelongTo: RoleDetails.UserData._id,
+          BelongsTo: RoleDetails.UserData._id,
         },
       },
     })
