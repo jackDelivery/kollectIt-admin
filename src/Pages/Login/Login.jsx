@@ -21,7 +21,7 @@ function Login() {
   let navigate = useNavigate();
 
   const notify = () =>
-    toast.success("Login Successfully!", {
+    toast.success("Login Successful!", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -94,16 +94,16 @@ function Login() {
             </h1>
             <Form onSubmit={!isLoading ? handleClick : null}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>Phone Login Id</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter email"
+                  placeholder="Phone Login id"
                   ref={email}
                 />
 
-                <Form.Text className="text-muted">
+                {/* <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
-                </Form.Text>
+                </Form.Text> */}
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">

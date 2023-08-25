@@ -197,7 +197,7 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(3)}>
           <span style={{ marginLeft: "5%" }}>
-            {!collapsed ? "View Client" : ""}
+            {!collapsed ? "View Clients" : ""}
           </span>
         </div>
       ),
@@ -208,9 +208,7 @@ export default function Dashboard() {
       icon: <DollarCircleOutlined onClick={() => setTrigger(21)} />,
       label: (
         <div onClick={() => setTrigger(21)}>
-          <span style={{ marginLeft: "5%" }}>
-            {!collapsed ? "Add Balance" : ""}
-          </span>
+          <span style={{ marginLeft: "5%" }}>{!collapsed ? "Top Up" : ""}</span>
         </div>
       ),
     },
@@ -278,7 +276,7 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(12)}>
           <span style={{ marginLeft: "5%" }}>
-            {!collapsed ? "Transaction" : ""}
+            {!collapsed ? "Transactions" : ""}
           </span>
         </div>
       ),
@@ -287,7 +285,7 @@ export default function Dashboard() {
     Role == "Cashier" ? (
       <></>
     ) : (
-      getItem("Meamber List", "sub4", <TeamOutlined />, itemChild, b)
+      getItem("Member List", "sub4", <TeamOutlined />, itemChild, b)
     ),
     {
       // Cashier: "Cashier",
@@ -317,8 +315,8 @@ export default function Dashboard() {
       label: (
         <div onClick={() => setTrigger(18)}>
           <span style={{ marginLeft: "5%" }}>
-            {!collapsed ? "Add Quota" : ""}
-          </span> 
+            {!collapsed ? "Increase Quota" : ""}
+          </span>
         </div>
       ),
     },

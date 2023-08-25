@@ -145,7 +145,7 @@ export default function PaymentData() {
       <div class=" overflow-auto" style={{ maxHeight: "110vh" }}>
         <table id="myTable">
           <tr class="header">
-            <th>Verify.Code</th>
+            <th>Verify Code</th>
             <th>Name</th>
             <th>Draw On</th>
             <th>Payment Status</th>

@@ -24,9 +24,9 @@ export default function AddMember() {
             url: Url + "/auth/employe",
             data: {
                 name: name.current.value,
-                email: email.current.value,
+                loginId: email.current.value,
                 password: password.current.value,
-                ConatactNumber: ConatactNumber.current.value,
+                email: ConatactNumber.current.value,
                 shortCode: UserDetail.shortCode,
                 createdBy: UserDetail._id,
                 companyName: UserDetail.companyName,
@@ -58,15 +58,15 @@ export default function AddMember() {
                     <hr />
                     <div>
                         <label for="psw-repeat"><b>User Name</b></label>
-                        <input type="text" placeholder="member Name" name="name" ref={name} />
+                        <input type="text" placeholder="User name of team member" name="name" ref={name} />
                     </div>
                     <div>
-                        <label for="email"><b>Login Id</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" ref={email} />
+                        <label for="loginId"><b>Number or Login Id</b></label>
+                        <input type="text" placeholder="Number or Login Id" name="email" ref={email} />
                     </div>
                     <div>
-                        <label for="Contact Number"><b>Conatct Number</b></label>
-                        <input type="text" placeholder="Enter Conatact Number" name="number" ref={ConatactNumber} />
+                        <label for="email"><b>Secoundry Conatct</b></label>
+                        <input type="text" placeholder="Enter Email" name="number" ref={ConatactNumber} />
                     </div>
 
                     <label for="psw"><b>Password</b></label>
