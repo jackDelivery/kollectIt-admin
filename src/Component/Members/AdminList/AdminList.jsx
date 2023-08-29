@@ -29,6 +29,7 @@ export default function AdminList(data) {
         <>
             <tr>
                 <td>{data.alldata.employeeName}</td>
+                <td>{data.alldata.loginId}</td>
                 <td>{data.alldata.employeeEmail}</td>
                 <td>{data.alldata.employeePassword}</td>
                 <td>

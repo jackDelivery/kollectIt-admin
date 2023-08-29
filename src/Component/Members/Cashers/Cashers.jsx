@@ -33,6 +33,7 @@ export default function Cashers() {
           <thead class="bg-light">
             <tr>
               <th>Cashier Name</th>
+              <th>Login Id</th>
               <th>Email</th>
               <th>Password</th>
               <th>Stutus</th>
@@ -45,6 +46,7 @@ export default function Cashers() {
               return (
                 <tr>
                   <td>{v.employeeName}</td>
+                  <td>{v.loginId}</td>
                   <td>{v.employeeEmail}</td>
                   <td>{v.employeePassword}</td>
                   <td>

@@ -35,6 +35,7 @@ export default function Riders() {
           >
             <tr>
               <th>Rider Name</th>
+              <th>Login Id</th>
               <th>Email</th>
               <th>Password</th>
               <th>Stutus</th>
@@ -47,6 +48,7 @@ export default function Riders() {
               return (
                 <tr>
                   <td>{v.employeeName}</td>
+                  <td>{v.loginId}</td>
                   <td>{v.employeeEmail}</td>
                   <td>{v.employeePassword}</td>
                   <td>
