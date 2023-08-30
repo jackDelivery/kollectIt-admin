@@ -33,7 +33,7 @@ export default function Cashers() {
           <thead class="bg-light">
             <tr>
               <th>Cashier Name</th>
-              <th>Login Id</th>
+              <th>Login ID</th>
               <th>Email</th>
               <th>Password</th>
               <th>Stutus</th>

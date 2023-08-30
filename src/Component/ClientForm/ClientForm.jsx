@@ -65,15 +65,15 @@ export default function ClientForm() {
           }}>
           <div style={{ textAlign: "center" }}>
             <h1>Client Form</h1>
-            <p>Please fill in this form to create an account.</p>
+            {/* <p>Please fill in this form to create an account.</p> */}
           </div>
           <hr />
 
 
           <div class="row p-2">
 
-            <label for="fname">Id</label>
-            <input type="text" id="fname" name="firstname" ref={ClientId} placeholder="Client Id.." required />
+            <label for="fname">ID</label>
+            <input type="text" id="fname" name="firstname" ref={ClientId} placeholder="Client ID.." required />
 
             <label for="fname">Name</label>
             <input type="text" id="fname" name="firstname" ref={ClientName} placeholder="Client name.." required />

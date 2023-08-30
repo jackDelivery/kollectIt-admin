@@ -151,7 +151,7 @@ export default function AysnRider() {
           <table class="table table-hover ">
             <thead class="bg-light">
               <tr>
-                <th>Client Id</th>
+                <th>Client ID</th>
                 <th>Name</th>
                 <th>Number</th>
                 <th>Email</th>

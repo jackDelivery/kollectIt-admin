@@ -71,7 +71,7 @@ export default function VocherLeger() {
           class="container mt-3 overflow-auto"
           style={{ maxHeight: "110vh" }}
         >
-          <h2>Voucher Ledger</h2>
+          <h2>Cash Ledger</h2>
           <CSVLink
             headers={headers}
             filename="VocherLeger List.csv"

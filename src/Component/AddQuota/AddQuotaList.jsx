@@ -38,7 +38,7 @@ export default function AddQuotaList(data) {
     setBelongsID(v.BelongsTo);
   };
   const notify = (message) =>
-    toast.success(`Add ${message} Successfully!`, {
+    toast.success(`Adding  ${message} Successfully!`, {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -178,7 +178,7 @@ export default function AddQuotaList(data) {
                 class="btn btn-success close"
                 data-dismiss="modal"
               >
-                SUMBIT
+                SUBMIT
               </button>
               {/* <button type="button" onClick={handleSubmit} value={value} class="btn btn-success close">Submit</button> */}
               <button type="button" class="btn btn-danger" data-dismiss="modal">
@@ -226,7 +226,7 @@ export default function AddQuotaList(data) {
                 class="btn btn-success close"
                 data-dismiss="modal"
               >
-                SUMBIT
+                SUBMIT
               </button>
               {/* <button type="button" onClick={handleSubmit} value={value} class="btn btn-success close">Submit</button> */}
               <button type="button" class="btn btn-danger" data-dismiss="modal">

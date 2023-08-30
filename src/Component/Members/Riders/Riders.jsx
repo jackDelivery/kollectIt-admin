@@ -35,7 +35,7 @@ export default function Riders() {
           >
             <tr>
               <th>Rider Name</th>
-              <th>Login Id</th>
+              <th>Login ID</th>
               <th>Email</th>
               <th>Password</th>
               <th>Stutus</th>

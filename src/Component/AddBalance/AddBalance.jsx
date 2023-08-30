@@ -81,7 +81,7 @@ export default function AddBalance() {
             <input
               type="text"
               name="card-num"
-              placeholder="PKR 3000.00"
+              placeholder="Your Amount"
               size="17"
               id="cno"
               minlength="19"
@@ -171,7 +171,8 @@ export default function AddBalance() {
         <input
           type="text"
           name="card-num"
-          placeholder="PKR 3000.00"
+          // placeholder="PKR 3000.00"
+          placeholder="Your Amount"
           size="17"
           id="cno"
           minlength="19"

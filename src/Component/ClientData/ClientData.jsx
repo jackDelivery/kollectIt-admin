@@ -103,7 +103,7 @@ export default function ClientData() {
       <div className="overflow-auto" style={{ maxHeight: "110vh" }}>
         <table id="myTable">
           <tr class="header">
-            <th style={{ width: 60 }}>ClientId</th>
+            <th style={{ width: 60 }}>Client ID</th>
             <th style={{ width: 60 }}>Name</th>
             <th style={{ width: 60 }}>Number</th>
             <th style={{ width: 60 }}>Email</th>
@@ -114,7 +114,7 @@ export default function ClientData() {
               <tr>
                 <td>{v.ClientId}</td>
                 <td>{v.ClientName}</td>
-                <td>+{v.ClientPhoneNumber}</td>
+                <td>{v.ClientPhoneNumber}</td>
                 <td>{v.ClientEmail}</td>
                 <td>{v.ClientAmount}</td>
               </tr>

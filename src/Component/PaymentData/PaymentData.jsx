@@ -115,19 +115,22 @@ export default function PaymentData() {
 
   return (
     <div>
-  
-
       <CSVLink
         headers={headers}
         filename="Payment Data.csv"
         data={allData}
         ref={csvLinkEl}
       />
-         <h1 className="text-center">Payment List</h1>
+      <h1 className="text-center">Payment List</h1>
       <div className="d-flex flex-row-reverse m-2">
         <button
           class="btn text-white"
-          style={{ background: "#427D8F", fontSize: 15, marginTop: "-3%", padding:10}}
+          style={{
+            background: "#427D8F",
+            fontSize: 15,
+            marginTop: "-3%",
+            padding: 10,
+          }}
           onClick={downloadReport}
           role="button"
         >
@@ -248,8 +251,7 @@ export default function PaymentData() {
                 data-dismiss="modal"
                 onClick={() => handler()}
               >
-                {" "}
-                SUMBIT
+                SUBMIT
               </button>
               {/* <button type="button" onClick={handleSubmit} value={value} class="btn btn-success close">Submit</button> */}
               <button type="button" class="btn btn-danger" data-dismiss="modal">

@@ -53,23 +53,23 @@ export default function AddMember() {
                 <div class="p-2">
                     <div style={{ textAlign: "center" }}>
                         <h1>Add Members</h1>
-                        <p>Please fill in this form to create an account.</p>
+                        {/* <p>Please fill in this form to create an account.</p> */}
                     </div>
                     <hr />
                     <div>
-                        <label for="psw-repeat"><b>User Name</b></label>
+                        <label for="psw-repeat">User Name</label>
                         <input type="text" placeholder="User name of team member" name="name" ref={name} />
                     </div>
                     <div>
-                        <label for="loginId"><b>Number or Login Id</b></label>
-                        <input type="text" placeholder="Number or Login Id" name="email" ref={email} />
+                        <label for="loginId">Number or Login ID</label>
+                        <input type="text" placeholder="Number or Login ID" name="email" ref={email} />
                     </div>
                     <div>
-                        <label for="email"><b>Secoundry Conatct</b></label>
+                        <label for="email">Secoundry Conatct</label>
                         <input type="text" placeholder="Enter Email" name="number" ref={ConatactNumber} />
                     </div>
 
-                    <label for="psw"><b>Password</b></label>
+                    <label for="psw">Password</label>
                     <input type="password" placeholder="Enter Password" name="psw" ref={password} />
 
                     <label for="role">Choose a Role:</label>
@@ -78,7 +78,6 @@ export default function AddMember() {
                         <option value="Rider">Rider</option>
                         <option value="Cashier">Cashier</option>
                     </select>
-
 
                     <hr />
                     <button type="submit" class="registerbtn" style={{ backgroundColor: "#427D8F" }}>Register</button>

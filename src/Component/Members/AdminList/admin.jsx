@@ -26,7 +26,7 @@ export default function Admin() {
                         <thead class="bg-light">
                             <tr>
                                 <th>Admin Name</th>
-                                <th>Login Id</th>
+                                <th>Login ID</th>
                                 <th>Email</th>
                                 <th>Password</th>
                                 <th>Stutus</th>
