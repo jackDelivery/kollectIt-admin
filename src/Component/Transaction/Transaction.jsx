@@ -1,17 +1,20 @@
 import { useEffect, useRef } from "react";
 import { useState, useContext } from "react";
 import StoreContext from "../../ContextApi";
-import { CSVLink } from "react-csv";
 import { Url } from "../../Pages/Core";
+import Filter from "../filter/filter";
+import { CSVLink } from "react-csv";
 import axios from "axios";
 import React from "react";
 import "./Transaction.css";
 import moment from "moment";
 
 export default function TransactionList() {
-  const [dataTras, setDatatras] = useState([]);
+  const [allData, setallData] = useState([]);
   const [fromName, setFromName] = useState([]);
   const [toName, setToName] = useState([]);
+  const [filterItem, setfilterItem] = useState(allData);
+
   const UserCredentials = useContext(StoreContext);
   const csvLinkEl = useRef(null);
 
@@ -36,7 +39,7 @@ export default function TransactionList() {
     })
       .then((res) => {
         // console.log(res.data, "resss");
-        setDatatras(res.data);
+        setallData(res.data);
         transaction(res.data);
       })
       .catch((err) => {});
@@ -119,13 +122,18 @@ export default function TransactionList() {
         <CSVLink
           headers={headers}
           filename="Transaction List.csv"
-          data={dataTras}
+          data={allData}
           ref={csvLinkEl}
         />
-        <div className="d-flex flex-row-reverse m-2">
+      <div className="d-flex flex-row-reverse m-2">
+        <div className="m-2">
           <button
-            class="btn text-white"
-            style={{ background: "#427D8F", fontSize: 15 }}
+            class="btn text-white "
+            style={{
+              background: "#427D8F",
+              fontSize: 15,
+              marginTop: "-3%",
+            }}
             onClick={downloadReport}
             role="button"
           >
@@ -133,6 +141,11 @@ export default function TransactionList() {
             <i class="far fa-circle-down mx-2 "></i>
           </button>
         </div>
+        <div className="m-2">
+          <Filter data={{ allData, setfilterItem }} />
+        </div>
+      </div>
+
 
         <table class="table table-hover">
           <thead class="bg-light">
@@ -146,7 +159,7 @@ export default function TransactionList() {
             </tr>
           </thead>
           <tbody>
-            {dataTras.map((v, i) => {
+            {allData.map((v, i) => {
               return (
                 <tr key={i}>
                   <td>{moment(v.createdOn).format("llll")}</td>

@@ -2,10 +2,12 @@ import axios from "axios";
 import React, { useEffect, useRef, useState, useContext } from "react";
 import { Url } from "../../../Pages/Core";
 import StoreContext from "../../../ContextApi";
+import Filter from "../../filter/filter";
 
 export default function Cashers() {
   const [allData, setallData] = useState([]);
   const UserCredentials = useContext(StoreContext);
+  const [filterItem, setfilterItem] = useState(allData);
   // console.log(UserCredentials.UserData);
 
   useEffect(() => {
@@ -28,7 +30,26 @@ export default function Cashers() {
     <div class="card card-cascade narrower">
       <div class="container mt-3 overflow-auto" style={{ maxHeight: "110vh" }}>
         <h2>Cashiers</h2>
-
+        <div className="d-flex flex-row-reverse m-2">
+        <div className="m-2">
+          {/* <button
+            class="btn text-white "
+            style={{
+              background: "#427D8F",
+              fontSize: 15,
+              marginTop: "-3%",
+            }}
+            onClick={downloadReport}
+            role="button"
+          >
+            Export
+            <i class="far fa-circle-down mx-2 "></i>
+          </button> */}
+        </div>
+        <div className="m-2">
+          <Filter data={{ allData, setfilterItem }} />
+        </div>
+      </div>
         <table class="table table-hover">
           <thead class="bg-light">
             <tr>

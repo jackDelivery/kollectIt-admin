@@ -3,6 +3,7 @@ import { Button, Modal } from "antd";
 import React, { useEffect, useState, useContext } from "react";
 import { Url } from "../../../Pages/Core";
 import StoreContext from "../../../ContextApi";
+import Filter from "../../filter/filter";
 
 export default function AysnRider() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -10,6 +11,7 @@ export default function AysnRider() {
   const [Client, setClient] = useState([]);
   const [ClinetID, setClinetID] = useState(null);
   const [realTime, setRealTime] = useState(true);
+  const [filterItem, setfilterItem] = useState(allData);
   const UserCredentials = useContext(StoreContext);
   // console.log(UserCredentials.UserData._id, "raza");
   useEffect(() => {
@@ -123,9 +125,8 @@ export default function AysnRider() {
           <a href="" class="white-text mx-3">
             Allow Access
           </a>
-
           <div>
-            <button
+            {/* <button
               type="button"
               class="btn btn-outline-white btn-rounded btn-sm px-2"
             >
@@ -142,11 +143,31 @@ export default function AysnRider() {
               class="btn btn-outline-white btn-rounded btn-sm px-2"
             >
               <i class="fas fa-info-circle mt-0"></i>
-            </button>
+            </button> */}
           </div>
         </div>
         <div class="container overflow-auto" style={{ maxHeight: "110vh" }}>
           <h2>Assign Rider</h2>
+          <div className="d-flex flex-row-reverse m-2">
+            <div className="m-2">
+              {/* <button
+            class="btn text-white "
+            style={{
+              background: "#427D8F",
+              fontSize: 15,F
+              marginTop: "-3%",
+            }}
+            onClick={downloadReport}
+            role="button"
+          >
+            Export
+            <i class="far fa-circle-down mx-2 "></i>
+          </button> */}
+            </div>
+            <div className="m-2">
+              <Filter data={{ allData, setfilterItem }} />
+            </div>
+          </div>
 
           <table class="table table-hover ">
             <thead class="bg-light">

@@ -4,11 +4,13 @@ import { Url } from "../../Pages/Core";
 import { CSVLink } from "react-csv";
 import "./ClientData.css";
 import axios from "axios";
+import Filter from "../filter/filter";
 
 export default function ClientData() {
   const [allData, setallData] = useState([]);
   const UserCredentials = useContext(StoreContext);
   const csvLinkEl = useRef(null);
+  const [filterItem, setfilterItem] = useState(allData);
 
   const headers = [
     { label: "ClientId", key: "ClientId" },
@@ -46,7 +48,7 @@ export default function ClientData() {
     }
   }, []);
 
-  // console.log(allData, "allData");
+  console.log(filterItem, "filter Client Data");
 
   function myFunction() {
     var input, filter, table, tr, td, i, txtValue;
@@ -83,15 +85,25 @@ export default function ClientData() {
       />
       <h1 className="text-center">Client List</h1>
       <div className="d-flex flex-row-reverse m-2">
-        <button
-          class="btn text-white"
-          style={{ background: "#427D8F", fontSize: 15, marginTop: "-3%", padding:10}}
-          onClick={downloadReport}
-          role="button"
-        >
-          Export
-          <i class="far fa-circle-down mx-2 "></i>
-        </button>
+        <div className="m-2">
+          <button
+            class="btn text-white "
+            style={{
+              background: "#427D8F",
+              fontSize: 15,
+              marginTop: "-3%",
+              // padding: 10,
+            }}
+            onClick={downloadReport}
+            role="button"
+          >
+            Export
+            <i class="far fa-circle-down mx-2 "></i>
+          </button>
+        </div>
+        <div className="m-2">
+          <Filter data={{ allData, setfilterItem }} />
+        </div>
       </div>
       <input
         type="text"

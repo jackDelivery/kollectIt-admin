@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import VocherLegerList from "./VocherLegerList";
 import StoreContext from "../../ContextApi";
 import { Url } from "../../Pages/Core";
+import Filter from "../filter/filter";
 import { CSVLink } from "react-csv";
 import moment from "moment";
 import axios from "axios";
@@ -11,6 +12,7 @@ export default function VocherLeger() {
   const [allData, setallData] = useState([]);
   const UserCredentials = useContext(StoreContext);
   const csvLinkEl = useRef(null);
+  const [filterItem, setfilterItem] = useState(allData);
 
   const headers = [
     { label: "Date", key: "createdOn" },
@@ -78,17 +80,28 @@ export default function VocherLeger() {
             data={allData}
             ref={csvLinkEl}
           />
-          <div className="d-flex flex-row-reverse m-2">
-            <button
-              class="btn text-white"
-              style={{ background: "#427D8F", fontSize: 15 }}
-              onClick={downloadReport}
-              role="button"
-            >
-              Export
-              <i class="far fa-circle-down mx-2 "></i>
-            </button>
-          </div>
+
+          
+<div className="d-flex flex-row-reverse m-2">
+        <div className="m-2">
+          <button
+            class="btn text-white "
+            style={{
+              background: "#427D8F",
+              fontSize: 15,
+              marginTop: "-3%",
+            }}
+            onClick={downloadReport}
+            role="button"
+          >
+            Export
+            <i class="far fa-circle-down mx-2 "></i>
+          </button>
+        </div>
+        <div className="m-2">
+          <Filter data={{ allData, setfilterItem }} />
+        </div>
+      </div>
 
           <table class="table table-hover">
             <thead class="bg-light">

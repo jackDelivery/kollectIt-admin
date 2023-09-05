@@ -4,6 +4,9 @@ import { Url } from "../../Pages/Core";
 import { CSVLink } from "react-csv";
 import "./PaymentData.css";
 import axios from "axios";
+import Filter from "../filter/filter";
+import moment from "moment";
+
 
 export default function PaymentData() {
   const [allData, setallData] = useState([]);
@@ -11,6 +14,7 @@ export default function PaymentData() {
   const [realTime, setRealTime] = useState(true);
   const [ObjId, setObjId] = useState("");
   const [Imagelink, setImagelink] = useState([]);
+  const [filterItem, setfilterItem] = useState([]);
   const csvLinkEl = useRef(null);
 
   const headers = [
@@ -42,6 +46,9 @@ export default function PaymentData() {
     }).then((response) => {
       console.log(response.data, "response");
       setallData(response.data);
+      setfilterItem(response.data);
+      // setfilterItem();
+      
     });
   }, [realTime]);
 
@@ -112,7 +119,10 @@ export default function PaymentData() {
       csvLinkEl.current.link.click();
     });
   };
-
+  console.log(filterItem, "filter PAyment Data Data");
+// useEffect(()=>{
+//   setallData(filterItem)
+// },[])
   return (
     <div>
       <CSVLink
@@ -121,23 +131,30 @@ export default function PaymentData() {
         data={allData}
         ref={csvLinkEl}
       />
+
       <h1 className="text-center">Payment List</h1>
+
       <div className="d-flex flex-row-reverse m-2">
-        <button
-          class="btn text-white"
-          style={{
-            background: "#427D8F",
-            fontSize: 15,
-            marginTop: "-3%",
-            padding: 10,
-          }}
-          onClick={downloadReport}
-          role="button"
-        >
-          Export
-          <i class="far fa-circle-down mx-2 "></i>
-        </button>
+        <div className="m-2">
+          <button
+            class="btn text-white "
+            style={{
+              background: "#427D8F",
+              fontSize: 15,
+              marginTop: "-3%",
+            }}
+            onClick={downloadReport}
+            role="button"
+          >
+            Export
+            <i class="far fa-circle-down mx-2 "></i>
+          </button>
+        </div>
+        <div className="m-2">
+          <Filter data={{ allData, setfilterItem }} />
+        </div>
       </div>
+
       <input
         type="text"
         id="myInput"
@@ -153,7 +170,7 @@ export default function PaymentData() {
             <th>Draw On</th>
             <th>Payment Status</th>
             <th>Due On</th>
-            <th>Image</th>
+            <th>Date</th>
             <th>Staus</th>
             <th>Action</th>
           </tr>
@@ -163,18 +180,19 @@ export default function PaymentData() {
             </>
           ) : (
             <>
-              {allData.map((v, index) => {
-                console.log(v);
+              {filterItem.map((v, index) => {
+                // console.log(v.createdOn);
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td className="text-center">{v.VerificationCode}</td>
                     <td>{v.PaymentName}</td>
                     <td>{v.drawOn}</td>
                     <td>{v.PaymentStatus}</td>
                     <td className="text-center">{v.dueOn}</td>
-                    <td>
+                   <td>{moment(v.createdOn).format("MMM Do YY")}</td>
+                    {/* <td>
                       <img src={v.imageUrl} id="tableImage" />
-                    </td>
+                    </td> */}
                     <td>{v.status}</td>
                     <td>
                       <td>
