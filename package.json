@@ -15,6 +15,7 @@
     "axios": "^0.27.2",
     "chart.js": "^4.3.0",
     "compute-scroll-into-view": "^3.0.3",
+    "crypto-js": "^4.1.1",
     "framer-motion": "^10.12.14",
     "mdb-ui-kit": "^4.2.0",
     "mdbreact": "^5.2.0",

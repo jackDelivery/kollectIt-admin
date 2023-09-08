@@ -18,7 +18,7 @@ import {
   Riders,
   AysnRider,
   SMSleger,
-  AddBlance,
+  TopUP,
 } from "../../Component/index";
 import {
   MenuUnfoldOutlined,
@@ -504,7 +504,7 @@ export default function Dashboard() {
             </>
           ) : trigger === 21 ? (
             <>
-              <AddBlance />
+              <TopUP />
             </>
           ) : (
             <>Page Not Found</>

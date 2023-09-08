@@ -63,13 +63,13 @@ input {
 .col-sm-5 {
   padding-left: 90px;
 }
-.btn {
-  /* background: #427D8F !important; */
-  /* background: #f3a002 !important; */
-  /* border: none; */
-  /* border-radius: 30px; */
-  /* width: 100%; */
-}
+/* .btn {
+  background: #427D8F !important;
+  background: #f3a002 !important;
+  border: none;
+  border-radius: 30px;
+  width: 100%;
+} */
 .btn:focus {
   box-shadow: none;
 }
