@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "antd/dist/antd.css";
 import "./Dashboard.css";
+import queryString from 'query-string';
 import { Layout, Menu } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -56,8 +57,16 @@ export default function Dashboard() {
   const [collapsed, setCollapsed] = useState(false);
   const [trigger, setTrigger] = useState(1);
   const [localRole, setlocalRole] = useState([]);
+  const location = useLocation();
+  const queryParams = queryString.parse(location.search);
 
   useEffect(() => {
+   
+const search=location.search;
+//const jsonObject = JSON.parse(search);
+
+    console.log("search in Dashboard",search);
+   console.log("json in Dashboard",queryParams );
     const localRole = JSON.parse(localStorage.getItem("Role"));
     if (localRole) {
       setlocalRole(localRole);

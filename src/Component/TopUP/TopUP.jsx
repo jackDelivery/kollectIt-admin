@@ -74,7 +74,7 @@ export default function TopUP() {
     for (let i = 0; i < 8; i++) {
       RandomNum += Letters[Math.floor(Math.random() * 16)];
     }
-    setOrderId(RandomNum);
+    setOrderId("Order-1234");
   }
 
   function percentage(percent, total) {
@@ -354,7 +354,7 @@ export default function TopUP() {
               <input
                 type="text"
                 name="MerchantName"
-                Value={UserCredentials.employeeName}
+                Value={"TecStik"}
                 className="bg-white"
               />
               <input
