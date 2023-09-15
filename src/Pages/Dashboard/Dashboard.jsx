@@ -58,21 +58,29 @@ export default function Dashboard() {
   const [trigger, setTrigger] = useState(1);
   const [localRole, setlocalRole] = useState([]);
   const location = useLocation();
-  const queryParams = queryString.parse(location.search);
+
 
   useEffect(() => {
    
-const search=location.search;
-//const jsonObject = JSON.parse(search);
 
-    console.log("search in Dashboard",search);
-   console.log("json in Dashboard",queryParams );
+
+  
     const localRole = JSON.parse(localStorage.getItem("Role"));
     if (localRole) {
       setlocalRole(localRole);
     }
     localRole === "Cashier" ? setTrigger(17) : <></>;
   }, []);
+//useffect for bill
+useEffect(() => {
+
+  const search=location.search;
+  const queryParams = queryString.parse(search);
+  
+      console.log("search in Dashboard",search);
+     console.log("json in Dashboard",queryParams );
+      
+    }, [location.search]);
 
   RoleDetails.setRole(localRole);
   const Role = RoleDetails.Role;
