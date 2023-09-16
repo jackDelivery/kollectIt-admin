@@ -1,12 +1,12 @@
 import React, { useContext, useRef } from 'react';
-import './ThankyouPayment.css';
+import './DeclinedPayment.css';
 import axios from 'axios';
 import { Url } from '../../Pages/Core';
 import StoreContext from '../../ContextApi';
-import iconTick from './tick.png';
+import iconCross from './cross.png';
 
 
-export default function ThankyouPayment() {
+export default function DeclinedPayment() {
 
 
   const ClientId = useRef()
@@ -59,9 +59,9 @@ export default function ThankyouPayment() {
       <br /> */}
 
       <div class="container col-50" style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
-        <img className='icon' src={iconTick} alt="" />
+        <img className='icon' src={iconCross} alt="" />
         
-        <p className='title'>Thank You For The Payment</p>
+        <p className='title'>Your Payment Has Been Declined</p>
       </div>
     </div>
   );

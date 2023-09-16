@@ -54,7 +54,9 @@ import AddQuota from "../../Component/AddQuota/AddQuota";
 import { AlertDialogOverlay } from "@chakra-ui/react";
 
 
-import ThankyouPayment from '../../Component/PaymentConfirmation/ThankyouPayment';
+import PaymentConfirmation1 from '../../Component/PaymentConfirmation/ThankyouPayment';
+import PaymentConfirmation2 from '../../Component/PaymentConfirmation/DeclinedPayment';
+
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -473,16 +475,16 @@ useEffect(() => {
             // maxHeight: "100vh",
           }}
         >
-          {trigger === 1 ? ( //change it to 0 laterr
+          {trigger === 0 ? ( 
             <>
-              <ThankyouPayment />
+              <PaymentConfirmation1 />
             </>
 
 
-          // {trigger === 1 ? (
-          //   <>
-          //     <AdminDashboard />
-          //   </>
+          ) : trigger === 1 ? (
+            <>
+              <AdminDashboard />
+            </>
           ) : trigger === 2 ? (
             <>
               <ClientForm />
