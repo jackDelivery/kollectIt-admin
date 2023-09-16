@@ -76,15 +76,7 @@ export default function Dashboard() {
   }, []);
 //useffect for bill
 useEffect(() => {
-  let data={
-    "OrderId": "Order-1234",
-    "ResponseCode": "00",
-    "ResponseMessage": "MIGS(AUTH/CAPTURE) Transaction Completed",
-    "Signature": "5a6ceb45def62e3d687c7fd67d295dd3",
-    "TransactionId": "2353150953594748",
-    "amountPaid": "800",
-    "discountAmount": "0"
-}
+ 
 
   const search=location.search;
   const queryParams = queryString.parse(search);
