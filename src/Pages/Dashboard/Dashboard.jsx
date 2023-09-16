@@ -84,10 +84,10 @@ useEffect(() => {
     "amountPaid": "800",
     "discountAmount": "0"
 }
-updateBill(data);
+
   const search=location.search;
   const queryParams = queryString.parse(search);
-  
+  updateBill(queryParams);
       console.log("search in Dashboard",search);
      console.log("json in Dashboard",queryParams );
       
@@ -107,7 +107,7 @@ updateBill(data);
         url: Url + "/billPayment",
         data: {
            Bill_Number: data.OrderId ,
-             Bill_status: "Paid done",
+             Bill_status: "Paid",
               Date_paid:Date.now().toString(),
               Amount_paid:data.amountPaid
           }
