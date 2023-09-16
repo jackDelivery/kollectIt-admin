@@ -4,6 +4,8 @@ import "./Dashboard.css";
 import queryString from 'query-string';
 import { Layout, Menu } from "antd";
 import { Link, useLocation } from "react-router-dom";
+import axios from 'axios';
+import { Url } from '../../Pages/Core';
 import {
   Cards,
   ClientForm,
@@ -73,7 +75,16 @@ export default function Dashboard() {
   }, []);
 //useffect for bill
 useEffect(() => {
-
+  let data={
+    "OrderId": "Order-1234",
+    "ResponseCode": "00",
+    "ResponseMessage": "MIGS(AUTH/CAPTURE) Transaction Completed",
+    "Signature": "5a6ceb45def62e3d687c7fd67d295dd3",
+    "TransactionId": "2353150953594748",
+    "amountPaid": "800",
+    "discountAmount": "0"
+}
+updateBill(data);
   const search=location.search;
   const queryParams = queryString.parse(search);
   
@@ -89,6 +100,23 @@ useEffect(() => {
     localStorage.removeItem("Role");
     navigate("/");
   };
+
+  async function  updateBill(data){
+    axios({
+        method: "post",
+        url: Url + "/billPayment",
+        data: {
+           Bill_Number: data.OrderId ,
+             Bill_status: "Paid done",
+              Date_paid:Date.now().toString(),
+              Amount_paid:data.amountPaid
+          }
+    }).then((res) => {
+        console.log("Response from bill Update",res);
+    }).catch((err) => {
+        console.log("zerror in bill",err);
+    })
+}
 
   var a = [
     // {
