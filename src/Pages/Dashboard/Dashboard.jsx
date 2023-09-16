@@ -51,6 +51,7 @@ import CashierDashboard from "../../Component/CashierDashboard/CashierDashboard"
 import AdminDashboard from "../../Component/AdminDashboard/AdminDashboard";
 import Kicon from "../Login/kollect-logo.png";
 import AddQuota from "../../Component/AddQuota/AddQuota";
+import { AlertDialogOverlay } from "@chakra-ui/react";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -87,7 +88,9 @@ useEffect(() => {
 
   const search=location.search;
   const queryParams = queryString.parse(search);
+  if(queryParams.ResponseCode=="00"){
   updateBill(queryParams);
+  }
       console.log("search in Dashboard",search);
      console.log("json in Dashboard",queryParams );
       
@@ -113,6 +116,7 @@ useEffect(() => {
           }
     }).then((res) => {
         console.log("Response from bill Update",res);
+       alert("Your payment is successfully received and recorded in our system");
     }).catch((err) => {
         console.log("zerror in bill",err);
     })
