@@ -97,19 +97,20 @@ export default function TopUP() {
 
   }
   async function  generateBilll(data){
-    let today= Date.now();
+    let today= Date.toString()
+
 
     axios({
         method: "post",
         url: Url + "/generateBill",
         data: {
           ClientId: data.OrderId ,
-          ClientObjectId: "Paid",
+          ClientObjectId: data.,
           ClientName:"",
-          Due_date:today.toDateString(),
+          Due_date:today,
           Aamount_within_dueDate:0,
           Amount_after_dueDate:0,
-          Billing_month:today.toDateString()
+          Billing_month:today
         }
     }).then((res) => {
         console.log("Response from Generate Bill",res);
