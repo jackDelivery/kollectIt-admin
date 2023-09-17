@@ -83,7 +83,17 @@ export default function TopUP() {
     setnetAmount(netAmnt);
   }
   const handleBill= async()=>{
-    percentage(2.5,PaymentAmount)
+    percentage(2.5,PaymentAmount);
+    let data={
+      clientName:UserCredentials.employeeName,
+      clientId:UserCredentials.employeeEmail,
+      clientObjId:UserCredentials._id,
+      amount:netAmount
+
+    }
+    generateBilll(data);
+
+
 
   }
   async function  generateBilll(data){
@@ -91,7 +101,7 @@ export default function TopUP() {
 
     axios({
         method: "post",
-        url: Url + "/billPayment",
+        url: Url + "/generateBill",
         data: {
           ClientId: data.OrderId ,
           ClientObjectId: "Paid",
@@ -102,10 +112,10 @@ export default function TopUP() {
           Billing_month:today.toDateString()
         }
     }).then((res) => {
-        console.log("Response from bill Update",res);
-       alert("Your payment is successfully received and recorded in our system");
+        console.log("Response from Generate Bill",res);
+       alert("Your Successfully Generated Bill in our system");
     }).catch((err) => {
-        console.log("zerror in bill",err);
+        console.log("zerror in Generatebill",err);
     })
 }
 
