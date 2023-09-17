@@ -475,16 +475,16 @@ useEffect(() => {
             // maxHeight: "100vh",
           }}
         >
-          {trigger === 0 ? ( 
+          {trigger === 1 ? ( 
             <>
-              <PaymentConfirmation1 />
+              <PaymentConfirmation2 />
             </>
 
 
-          ) : trigger === 1 ? (
-            <>
-              <AdminDashboard />
-            </>
+          // ) : trigger === 1 ? (
+          //   <>
+          //     <AdminDashboard />
+          //   </>
           ) : trigger === 2 ? (
             <>
               <ClientForm />
