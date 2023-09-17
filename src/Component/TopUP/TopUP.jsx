@@ -10,7 +10,7 @@ export default function TopUP() {
   const [OrderId, setOrderId] = useState("");
   const [CreditBalance, setCreditBalance] = useState("");
   const [PaymentAmount, setPaymentAmount] = useState("");
-  const [netAmount, setnetAmount] = useState("");
+  const [netAmount, setnetAmount] = useState(0.0);
   const [FunAuthToken, setFunAuthToken] = useState("");
 
   // let = useRef()
@@ -64,7 +64,7 @@ export default function TopUP() {
 
   useEffect(() => {
     getRandomNumber(); // Random Number Generate
-    percentage(2.5, 10000); // Calculate Percentage
+   // percentage(2.5, 10000); // Calculate Percentage
     PayOff(); // auth_token Generate
   }, []);
 
@@ -77,11 +77,37 @@ export default function TopUP() {
     setOrderId("Order-1234");
   }
 
-  function percentage(percent, total) {
-    let a = (2.5 / 100) * Number(PaymentAmount);
-    let netAmount = a + Number(PaymentAmount);
-    setnetAmount(netAmount);
+  function percentage(percent, amount) {
+    let netAmnt =  parseFloat(amount)/(1-(parseFloat(percent) / 100)) ;
+    console.log("NetAmount as calculated",netAmnt,percent, amount);
+    setnetAmount(netAmnt);
   }
+  const handleBill= async()=>{
+    percentage(2.5,PaymentAmount)
+
+  }
+  async function  generateBilll(data){
+    let today= Date.now();
+
+    axios({
+        method: "post",
+        url: Url + "/billPayment",
+        data: {
+          ClientId: data.OrderId ,
+          ClientObjectId: "Paid",
+          ClientName:"",
+          Due_date:today.toDateString(),
+          Aamount_within_dueDate:0,
+          Amount_after_dueDate:0,
+          Billing_month:today.toDateString()
+        }
+    }).then((res) => {
+        console.log("Response from bill Update",res);
+       alert("Your payment is successfully received and recorded in our system");
+    }).catch((err) => {
+        console.log("zerror in bill",err);
+    })
+}
 
   function PayOff() {
     axios({
@@ -248,8 +274,8 @@ export default function TopUP() {
             />
           </div>
           <div class="col-md-4 mt-2">
-            <button type="button" class="btn btn-primary mt-4" onClick={percentage}>
-              Submit
+            <button type="button" class="btn btn-primary mt-4" onClick={handleBill}>
+             get Bill
             </button>
           </div>
         </div>
