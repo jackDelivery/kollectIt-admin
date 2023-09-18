@@ -86,7 +86,7 @@ export default function TopUP() {
     percentage(2.5,PaymentAmount);
     let data={
       clientName:UserCredentials.employeeName,
-      clientId:UserCredentials.employeeEmail,
+      clientId:"UserCredentials.employeeEmail",
       clientObjId:UserCredentials._id,
       amount:netAmount
 
@@ -96,25 +96,26 @@ export default function TopUP() {
 
 
   }
-  async function  generateBilll(data){
+  async function  generateBilll(payload){
     let today= Date.toString()
+    console.log("Payload",payload);
 
 
     axios({
         method: "post",
         url: Url + "/generateBill",
         data: {
-          ClientId: data.OrderId ,
-          ClientObjectId: data.,
-          ClientName:"",
-          Due_date:today,
+          ClientId: payload.clientId ,
+          ClientObjectId: payload.clientObjId,
+          ClientName:payload.clientName,
+          Due_date:today.toString(),
           Aamount_within_dueDate:0,
           Amount_after_dueDate:0,
-          Billing_month:today
+          Billing_month:today.toString()
         }
     }).then((res) => {
         console.log("Response from Generate Bill",res);
-       alert("Your Successfully Generated Bill in our system");
+       alert("You Successfully Generated Bill in our system");
     }).catch((err) => {
         console.log("zerror in Generatebill",err);
     })
