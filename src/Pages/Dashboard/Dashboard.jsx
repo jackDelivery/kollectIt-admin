@@ -111,8 +111,10 @@ useEffect(() => {
     }).then((res) => {
         console.log("Response from bill Update",res);
        alert("Your payment is successfully received and recorded in our system");
+       setTrigger(22);
     }).catch((err) => {
         console.log("zerror in bill",err);
+        setTrigger(22);
     })
 }
 
