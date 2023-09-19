@@ -53,6 +53,11 @@ import Kicon from "../Login/kollect-logo.png";
 import AddQuota from "../../Component/AddQuota/AddQuota";
 import { AlertDialogOverlay } from "@chakra-ui/react";
 
+
+import PaymentConfirmation1 from '../../Component/PaymentConfirmation/ThankyouPayment';
+import PaymentConfirmation2 from '../../Component/PaymentConfirmation/DeclinedPayment';
+
+
 export default function Dashboard() {
   const navigate = useNavigate();
   const RoleDetails = useContext(StoreContext);
@@ -470,10 +475,16 @@ useEffect(() => {
             // maxHeight: "100vh",
           }}
         >
-          {trigger === 1 ? (
+          {trigger === 1 ? ( 
             <>
-              <AdminDashboard />
+              <PaymentConfirmation2 />
             </>
+
+
+          // ) : trigger === 1 ? (
+          //   <>
+          //     <AdminDashboard />
+          //   </>
           ) : trigger === 2 ? (
             <>
               <ClientForm />
