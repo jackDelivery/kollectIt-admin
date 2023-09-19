@@ -12,7 +12,7 @@ export default function TopUP() {
   const [PaymentAmount, setPaymentAmount] = useState("");
   const [netAmount, setnetAmount] = useState(0.0);
   const [FunAuthToken, setFunAuthToken] = useState("");
-
+  const [billObject, setBillObject] = useState(null);
   // let = useRef()
   // let = useRef()
   console.log(UserCredentials, "PaymentAmount");
@@ -109,13 +109,16 @@ export default function TopUP() {
           ClientObjectId: payload.clientObjId,
           ClientName:payload.clientName,
           Due_date:today.toString(),
-          Aamount_within_dueDate:0,
+          Aamount_within_dueDate:100,
           Amount_after_dueDate:0,
-          Billing_month:today.toString()
+          Billing_month:today.toString(),
+        MerchantId:"00001"
         }
     }).then((res) => {
         console.log("Response from Generate Bill",res);
+        setBillObject(res.data);
        alert("You Successfully Generated Bill in our system");
+       console.log("Bill Object",billObject);  
     }).catch((err) => {
         console.log("zerror in Generatebill",err);
     })
