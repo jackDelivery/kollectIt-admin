@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import "antd/dist/antd.css";
 import "./Dashboard.css";
+import PaymentConfirmation1 from '../../Component/PaymentConfirmation/ThankyouPayment';
+import PaymentConfirmation2 from '../../Component/PaymentConfirmation/DeclinedPayment';
 import queryString from 'query-string';
 import { Layout, Menu } from "antd";
 import { Link, useLocation } from "react-router-dom";
@@ -52,11 +54,6 @@ import AdminDashboard from "../../Component/AdminDashboard/AdminDashboard";
 import Kicon from "../Login/kollect-logo.png";
 import AddQuota from "../../Component/AddQuota/AddQuota";
 import { AlertDialogOverlay } from "@chakra-ui/react";
-
-
-import PaymentConfirmation1 from '../../Component/PaymentConfirmation/ThankyouPayment';
-import PaymentConfirmation2 from '../../Component/PaymentConfirmation/DeclinedPayment';
-
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -475,16 +472,10 @@ useEffect(() => {
             // maxHeight: "100vh",
           }}
         >
-          {trigger === 1 ? ( 
+          {trigger === 1 ? (
             <>
-              <PaymentConfirmation2 />
+              <AdminDashboard />
             </>
-
-
-          // ) : trigger === 1 ? (
-          //   <>
-          //     <AdminDashboard />
-          //   </>
           ) : trigger === 2 ? (
             <>
               <ClientForm />
@@ -558,6 +549,13 @@ useEffect(() => {
             <>
               <TopUP />
             </>
+            
+          ): trigger === 22 ? (
+           
+           
+            <>
+            <PaymentConfirmation1 />
+          </>
           ) : (
             <>Page Not Found</>
           )}
