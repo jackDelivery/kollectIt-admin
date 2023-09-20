@@ -15,6 +15,7 @@ export default function TopUP() {
   const [netAmount, setnetAmount] = useState(0.0);
   const [FunAuthToken, setFunAuthToken] = useState("");
   const [billObject, setBillObject] = useState(null);
+  const [merchantObject, setMerchantObject] = useState(null);
   // let = useRef()
   // let = useRef()
 
@@ -22,7 +23,8 @@ export default function TopUP() {
     if(billObject){
     console.log("BillObject in use effect",billObject);
 setOrderId(billObject.Bill_Number);
-setMerchant("TecStik");
+
+setMerchant(merchantObject.MerchantName);
 setOrderDate(billObject.Due_date.toString());
   }
   }, [billObject]);
@@ -127,7 +129,8 @@ setOrderDate(billObject.Due_date.toString());
         }
     }).then((res) => {
         console.log("Response from Generate Bill",res.data);
-        setBillObject(res.data);
+        setBillObject(res.data.bill);
+        setMerchantObject(res.data.merchant)
        alert("You Successfully Generated Bill in our system");
        console.log("Bill Object",billObject);  
     }).catch((err) => {
