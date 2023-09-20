@@ -8,6 +8,8 @@ import CryptoJS from "crypto-js";
 export default function TopUP() {
   const UserCredentials = useContext(StoreContext).UserData;
   const [OrderId, setOrderId] = useState("");
+  const [OrderDate, setOrderDate] = useState("");
+  const [merchant, setMerchant] = useState("");
   const [CreditBalance, setCreditBalance] = useState("");
   const [PaymentAmount, setPaymentAmount] = useState("");
   const [netAmount, setnetAmount] = useState(0.0);
@@ -15,6 +17,16 @@ export default function TopUP() {
   const [billObject, setBillObject] = useState(null);
   // let = useRef()
   // let = useRef()
+
+  useEffect(() => {
+    if(billObject){
+    console.log("BillObject in use effect",billObject);
+setOrderId(billObject.Bill_Number);
+setMerchant("TecStik");
+setOrderDate(billObject.Due_date.toString());
+  }
+  }, [billObject]);
+
   console.log(UserCredentials, "PaymentAmount");
   let JazzMobiNum = useRef();
   let JazzCNIC = useRef();
@@ -94,10 +106,9 @@ export default function TopUP() {
     generateBilll(data);
 
 
-
   }
   async function  generateBilll(payload){
-    let today= Date.toString()
+    let today= new Date().toDateString();
     console.log("Payload",payload);
 
 
@@ -109,13 +120,13 @@ export default function TopUP() {
           ClientObjectId: payload.clientObjId,
           ClientName:payload.clientName,
           Due_date:today.toString(),
-          Aamount_within_dueDate:100,
-          Amount_after_dueDate:0,
+          Aamount_within_dueDate:netAmount,
+          Amount_after_dueDate:netAmount,
           Billing_month:today.toString(),
         MerchantId:"00001"
         }
     }).then((res) => {
-        console.log("Response from Generate Bill",res);
+        console.log("Response from Generate Bill",res.data);
         setBillObject(res.data);
        alert("You Successfully Generated Bill in our system");
        console.log("Bill Object",billObject);  
@@ -395,7 +406,7 @@ export default function TopUP() {
               <input
                 type="text"
                 name="MerchantName"
-                Value={"TecStik"}
+                Value={merchant}
                 className="bg-white"
               />
               <input
@@ -431,7 +442,7 @@ export default function TopUP() {
               <input
                 type="hidden"
                 name="OrderDate"
-                Value={new Date().toDateString()}
+                Value={OrderDate}
               />
               {/* <!-- <input type="text" name="OrderDate" Value="2022-03-16"> --> */}
               <input
