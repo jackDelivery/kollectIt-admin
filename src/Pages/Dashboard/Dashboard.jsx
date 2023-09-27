@@ -84,7 +84,11 @@ useEffect(() => {
   const queryParams = queryString.parse(search);
   if(queryParams.ResponseCode=="00"){
   updateBill(queryParams);
-  }
+  }else if(queryParams.ResponseCode=="90"){
+    alert("Failed Authorization");
+    setTrigger(23);
+
+    }
       console.log("search in Dashboard",search);
      console.log("json in Dashboard",queryParams );
       
@@ -558,7 +562,13 @@ useEffect(() => {
             <>
             <PaymentConfirmation1 />
           </>
-          ) : (
+          ) : trigger === 23 ? (
+           
+           
+            <>
+            <PaymentConfirmation2 />
+          </>
+          ): (
             <>Page Not Found</>
           )}
         </Content>

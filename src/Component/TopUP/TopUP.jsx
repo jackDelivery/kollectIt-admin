@@ -440,7 +440,7 @@ setOrderDate(billObject.Due_date.toString());
               <input
                 type="hidden"
                 name="FailureUrl"
-                Value="https://kollectit.netlify.app/"
+                Value="http://localhost:3000/dashboard"
               />
               <input
                 type="hidden"
