@@ -85,7 +85,7 @@ useEffect(() => {
   if(queryParams.ResponseCode=="00"){
   updateBill(queryParams);
   }else if(queryParams.ResponseCode=="90"){
-    alert("Failed Authorization");
+ //   alert("Failed Authorization");
     setTrigger(23);
 
     }
