@@ -105,13 +105,18 @@ useEffect(() => {
   async function  updateBill(data){
     axios({
         method: "post",
-        url: Url + "/billPayment",
+        url: Url + "/kuickpay/billPayment",
         data: {
-           Bill_Number: data.OrderId ,
-             Bill_status: "Paid",
-              Date_paid:Date.now().toString(),
-              Amount_paid:data.amountPaid
-          }
+          
+            consumer_number:data.OrderId,
+            tran_auth_id:data.TransactionId,
+            transaction_amount:data.amountPaid,
+            tran_date:Date.now().toString(),
+            tran_time: Date.now().toString(), 
+            bank_mnemonic : "HBL",
+            reserved:"something, special, string, can, be, send, into, it."
+        }
+          
     }).then((res) => {
         console.log("Response from bill Update",res);
        alert("Your payment is successfully received and recorded in our system");

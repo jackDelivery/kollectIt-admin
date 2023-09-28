@@ -116,7 +116,7 @@ setOrderDate(billObject.Due_date.toString());
 
     axios({
         method: "post",
-        url: Url + "/generateBill",
+        url: Url + "/kuickpay/generateBill",
         data: {
           ClientId: payload.clientId ,
           ClientObjectId: payload.clientObjId,
