@@ -103,6 +103,15 @@ useEffect(() => {
   };
 
   async function  updateBill(data){
+
+    const header = {
+      'Content-Type': 'application/json', // Example: Sending JSON data
+      'username': 'user1', // Example: Sending an authorization token
+      'password': 'test',
+    };
+
+
+
     axios({
         method: "post",
         url: Url + "/kuickpay/billPayment",
@@ -115,7 +124,8 @@ useEffect(() => {
             tran_time: Date.now().toString(), 
             bank_mnemonic : "HBL",
             reserved:"something, special, string, can, be, send, into, it."
-        }
+        },
+        headers:header
           
     }).then((res) => {
         console.log("Response from bill Update",res);
