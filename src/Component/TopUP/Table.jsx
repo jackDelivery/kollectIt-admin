@@ -8,7 +8,7 @@ export default function Table() {
         <table className='table'>
            
             <tr>
-                <th>
+                <th colspan="2">
                 <img className='logo' src={logo} alt="" />
                 </th>
                 <td></td>

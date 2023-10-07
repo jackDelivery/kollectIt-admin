@@ -4,6 +4,8 @@ table, th, td{
 }
 .tableComponent{
     width: 65%;
+    margin-left: auto;
+    margin-right: auto;
     
 }
 .logo{
