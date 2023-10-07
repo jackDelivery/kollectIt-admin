@@ -1,10 +1,19 @@
 import React from 'react';
 import './Table.css';
+import logo from './tecstik.png'
 
 export default function Table() {
   return (
-    <div>
+    <div className='tableComponent'>
         <table className='table'>
+           
+            <tr>
+                <th>
+                <img className='logo' src={logo} alt="" />
+                </th>
+                <td></td>
+
+            </tr>
             <tr>
                 <th>A fintech division of Pacific Financial Services (Pvt) Limited</th>
                 <td></td>
