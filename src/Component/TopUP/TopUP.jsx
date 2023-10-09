@@ -393,23 +393,20 @@ setOrderDate(billObject.Due_date.toString());
       {/* <div class="tab-content" id="pills-tabContent"> */}
         {/* =========================>First TABS Content*/}
 
-        <div
-          class="tab-pane fade show active"
-          id="pills-home"
-          role="tabpanel"
-          aria-labelledby="pills-home-tab"
-        >
-          <div class="card col-4 mt-5 mx-auto">
-            <form
+      
+
+        <Table/>
+
+        <form
               method="post"
               action="https://testcheckout.kuickpay.com/api/Redirection"
               style={{ textAlign: "start", fontWeight: "unset" }}
             >
               <input type="hidden" name="InstitutionID" Value="01234" />
               <input type="hidden" name="OrderID" Value={OrderId} />
-              <label>Name :</label>
+             
               <input
-                type="text"
+                type="hidden"
                 name="MerchantName"
                 Value={merchant}
                 className="bg-white"
@@ -420,16 +417,16 @@ setOrderDate(billObject.Due_date.toString());
                 Value="Invoice"
                 className="bg-white"
               />
-              <label>CustomerMobileNumber :</label>
+            
               <input
-                type="text"
+                type="hidden"
                 name="CustomerMobileNumber"
                 Value={UserCredentials.loginId}
                 className="bg-white"
               />
-              <label>CustomerEmail :</label>
+             
               <input
-                type="text"
+                type="hidden"
                 name="CustomerEmail"
                 Value={UserCredentials.employeeEmail}
                 className="bg-white"
@@ -460,25 +457,25 @@ setOrderDate(billObject.Due_date.toString());
                 name="Token"
                 Value={FunAuthToken.auth_token}
               />
-              <label>GrossAmount :</label>
+            
               <input
-                type="text"
+                type="hidden"
                 name="GrossAmount"
                 Value="10000"
                 className="bg-white"
               />
 
-              <label>TaxAmount :</label>
+            
               <input
-                type="text"
-                name="TaxAmount"
+                type="hidden"
+                name="TaxAdmount"
                 Value="2.5"
                 className="bg-white"
               />
 
-              <label>Amount :</label>
+              
               <input
-                type="text"
+                type="hidden"
                 name="Amount"
                 Value={netAmount}
                 className="bg-white"
@@ -500,9 +497,7 @@ setOrderDate(billObject.Due_date.toString());
               {/* <input type="text" name="Signature" Value="<?php echo $Signature; ?>" /> */}
               <input type="submit" value="PAY NOW" />
             </form>
-          </div>
-        </div>
-
+      
         {/* =========================> Second TABS Content */}
         <div
           class="tab-pane fade d-flex justify-content-center"
@@ -690,7 +685,7 @@ setOrderDate(billObject.Due_date.toString());
         </div> */}
       {/* </div> */}
 
-       <Table/>
+      
 
       <br />
       <br />
