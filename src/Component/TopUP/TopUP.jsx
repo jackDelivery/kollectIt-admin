@@ -394,10 +394,8 @@ setOrderDate(billObject.Due_date.toString());
         {/* =========================>First TABS Content*/}
 
       
-
-        <Table/>
-
-        <form
+{billObject!=null?<><Table billObject={billObject}/>
+<form
               method="post"
               action="https://testcheckout.kuickpay.com/api/Redirection"
               style={{ textAlign: "start", fontWeight: "unset" }}
@@ -450,7 +448,7 @@ setOrderDate(billObject.Due_date.toString());
               <input
                 type="hidden"
                 name="CheckoutUrl"
-                Value="http://localhost:82/kuickpaycheckout.php"
+                Value="http://localhost:3000/dashboard"
               />
               <input
                 type="hidden"
@@ -496,7 +494,12 @@ setOrderDate(billObject.Due_date.toString());
               {/* <input type="text" name="AmountFeeCalculated" Value="<?php echo $AmountFeeCalculated; ?>" /> */}
               {/* <input type="text" name="Signature" Value="<?php echo $Signature; ?>" /> */}
               <input type="submit" value="PAY NOW" />
-            </form>
+            </form></>
+
+:<></>}
+        
+
+       
       
         {/* =========================> Second TABS Content */}
         <div
