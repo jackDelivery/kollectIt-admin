@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import "./TopUP.css";
+import Table from "./Table.jsx";
+
 import axios from "axios";
 import { Url } from "../../Pages/Core";
 import StoreContext from "../../ContextApi";
@@ -367,7 +369,7 @@ setOrderDate(billObject.Due_date.toString());
 
       {/* =========================> Payment  Amount field*/}
 
-      <div
+      {/* <div
         class="col-4"
         style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
       >
@@ -382,13 +384,13 @@ setOrderDate(billObject.Due_date.toString());
           minlength="19"
           maxlength="19"
         />
-      </div>
+      </div> */}
 
       {/* {console.log(OrderId, (100 * 2.5) / 1000, "Order====Id")}
       {console.log(FunAuthToken.auth_token, "Order====Id")} */}
       {/* =========================> TABS Content */}
 
-      <div class="tab-content" id="pills-tabContent">
+      {/* <div class="tab-content" id="pills-tabContent"> */}
         {/* =========================>First TABS Content*/}
 
         <div
@@ -686,7 +688,10 @@ setOrderDate(billObject.Due_date.toString());
             </div>
           </div>
         </div> */}
-      </div>
+      {/* </div> */}
+
+       <Table/>
+
       <br />
       <br />
       <br />

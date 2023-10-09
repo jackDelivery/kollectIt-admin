@@ -1,0 +1,13 @@
+table, th, td{
+    border: 1px solid black;
+
+}
+.tableComponent{
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.logo{
+    height: 200px;
+}
