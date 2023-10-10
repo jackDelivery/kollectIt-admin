@@ -1,8 +1,18 @@
-import React from 'react';
+import {React,useEffect,useState} from 'react';
 import './Table.css';
 import logo from './tecstik.png'
 
-export default function Table() {
+export default function Table({billObject}) {
+    const[invoice,setInvoice]=useState('-');
+    const[netAmount,setnetAmount]=useState('-');
+    useEffect(() => {
+     
+        console.log("BillObject in Table use effect",billObject);
+        setInvoice(billObject.Bill_Number);
+        setnetAmount(billObject.Aamount_within_dueDat)
+    
+    
+      }, [billObject]);
   return (
     <div className='tableComponent'>
         <table className='table'>
@@ -20,7 +30,7 @@ export default function Table() {
             </tr>
             <tr>
                 <th>Invoice Number</th>
-                <td>0001-151</td>
+                <td>{invoice}</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -31,8 +41,8 @@ export default function Table() {
                 <td></td>
             </tr>
             <tr>
-                <th>Net Amount</th>
-                <td>10,000</td>
+                <th> Net Amount</th>
+                <td>{netAmount}</td>
             </tr>
             <tr>
                 <th>Sales Tax @13%</th>
