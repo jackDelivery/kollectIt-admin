@@ -112,9 +112,12 @@ setOrderDate(billObject.Due_date.toString());
 
   }
   async function  generateBilll(payload){
-    let today= new Date().toDateString();
+    let today= new Date()
     console.log("Payload",payload);
-
+    let billmonth=today.getFullYear().toString().slice(-2)+(today.getMonth() + 1).toString();
+console.log("Bill Month",billmonth);
+let dueDate=today.getFullYear().toString()+(today.getMonth() + 1).toString()+today.getDate().toString();
+console.log("Bill Month",billmonth,"----",dueDate);
 
     axios({
         method: "post",
@@ -123,10 +126,10 @@ setOrderDate(billObject.Due_date.toString());
           ClientId: payload.clientId ,
           ClientObjectId: payload.clientObjId,
           ClientName:payload.clientName,
-          Due_date:today.toString(),
+          Due_date:dueDate,
           Aamount_within_dueDate:netAmount,
           Amount_after_dueDate:netAmount,
-          Billing_month:today.toString(),
+          Billing_month:billmonth,
         MerchantId:"00001"
         }
     }).then((res) => {
