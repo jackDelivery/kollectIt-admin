@@ -1,1 +1,3 @@
-export let Url ="http://localhost:5000";//https://kollectit-server-isgqawokiq-et.a.run.app"
+export let Url ="https://kollectit-server-isgqawokiq-et.a.run.app"
+
+//"http://localhost:5000";//
