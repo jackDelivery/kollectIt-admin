@@ -85,7 +85,7 @@ useEffect(() => {
   if(queryParams.ResponseCode=="00"){
   updateBill(queryParams);
   }else if(queryParams.ResponseCode=="90"){
- //   alert("Failed Authorization");
+    alert("Payment Failed");
     setTrigger(23);
 
     }
@@ -103,6 +103,8 @@ useEffect(() => {
   };
 
   async function  updateBill(data){
+    let amount =parseFloat(data.amountPaid)*100;
+    amount= "+"+"0".repeat(8)+amount;
 
     const header = {
       'Content-Type': 'application/json', // Example: Sending JSON data
@@ -119,7 +121,7 @@ useEffect(() => {
           
             consumer_number:data.OrderId,
             tran_auth_id:data.TransactionId,
-            transaction_amount:data.amountPaid,
+            transaction_amount:amount,
             tran_date:Date.now().toString(),
             tran_time: Date.now().toString(), 
             bank_mnemonic : "HBL",
