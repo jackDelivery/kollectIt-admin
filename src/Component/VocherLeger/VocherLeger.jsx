@@ -6,18 +6,22 @@ import Filter from "../filter/filter";
 import { CSVLink } from "react-csv";
 import moment from "moment";
 import axios from "axios";
-import Voucherdata from "./Voucher.json";
 import "./Voucher.css";
 // pagination import here
+import Voucherdata from "./Voucher.json";
 import { Stack, Pagination, Typography } from "@mui/material"
+
+console.log(Voucherdata?.length)
 
 
 export default function VocherLeger() {
   const [prevBalance, setPrevBalance] = useState(0);
-  const [allData, setallData] = useState([]);
   const UserCredentials = useContext(StoreContext);
   const csvLinkEl = useRef(null);
-  const [filterItem, setfilterItem] = useState(allData);
+  const [filterItem, setfilterItem] = useState([]);
+  const [allData, setallData] = useState([])
+
+  // new state json pagination
 
   // new state json pagination
   const [voucherData, setVoucherData] = useState(Voucherdata);
@@ -30,12 +34,12 @@ export default function VocherLeger() {
     const endIndex = startIndex + itemsPerPage;
     const itemsToShow = voucherData.slice(startIndex, endIndex);
     setVoucherData(itemsToShow);
-  }, [voucherData, currentPage]);
+  }, []);
 
   const handleChange = (event, value) => {
-    console.log(event)
     setCurrentPage(value);
   };
+
 
 
   const headers = [
@@ -64,7 +68,7 @@ export default function VocherLeger() {
           },
         },
       }).then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
         setallData(response.data);
       });
     } else {
@@ -154,7 +158,7 @@ export default function VocherLeger() {
           </table>
         </div>
         <div style={{ padding: "30px 0px" }}>
-          <Pagination
+        <Pagination
             className="pagi__style"
             count={Math.ceil(voucherData?.length / itemsPerPage)}
             page={currentPage}
