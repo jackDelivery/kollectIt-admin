@@ -6,6 +6,11 @@ import Filter from "../filter/filter";
 import { CSVLink } from "react-csv";
 import moment from "moment";
 import axios from "axios";
+import Voucherdata from "./Voucher.json";
+import "./Voucher.css";
+// pagination import here
+import { Stack, Pagination, Typography } from "@mui/material"
+
 
 export default function VocherLeger() {
   const [prevBalance, setPrevBalance] = useState(0);
@@ -13,6 +18,24 @@ export default function VocherLeger() {
   const UserCredentials = useContext(StoreContext);
   const csvLinkEl = useRef(null);
   const [filterItem, setfilterItem] = useState(allData);
+
+  // new state json pagination
+  const [voucherData, setVoucherData] = useState(Voucherdata);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5; // Number of items to display per page
+
+
+  useEffect(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const itemsToShow = voucherData.slice(startIndex, endIndex);
+    setVoucherData(itemsToShow);
+  }, [voucherData, currentPage]);
+
+  const handleChange = (event, value) => {
+    setCurrentPage(value);
+  };
+
 
   const headers = [
     { label: "Date", key: "createdOn" },
@@ -40,7 +63,7 @@ export default function VocherLeger() {
           },
         },
       }).then((response) => {
-        console.log(response.data, "smsLedger=>Response");
+        console.log(response.data)
         setallData(response.data);
       });
     } else {
@@ -58,7 +81,7 @@ export default function VocherLeger() {
         setallData(response.data);
       });
     }
-  }, []);
+  }, [allData]);
 
   const downloadReport = async () => {
     setTimeout(() => {
@@ -81,27 +104,27 @@ export default function VocherLeger() {
             ref={csvLinkEl}
           />
 
-          
-<div className="d-flex flex-row-reverse m-2">
-        <div className="m-2">
-          <button
-            class="btn text-white "
-            style={{
-              background: "#427D8F",
-              fontSize: 15,
-              marginTop: "-3%",
-            }}
-            onClick={downloadReport}
-            role="button"
-          >
-            Export
-            <i class="far fa-circle-down mx-2 "></i>
-          </button>
-        </div>
-        <div className="m-2">
-          <Filter data={{ allData, setfilterItem }} />
-        </div>
-      </div>
+
+          <div className="d-flex flex-row-reverse m-2">
+            <div className="m-2">
+              <button
+                class="btn text-white "
+                style={{
+                  background: "#427D8F",
+                  fontSize: 15,
+                  marginTop: "-3%",
+                }}
+                onClick={downloadReport}
+                role="button"
+              >
+                Export
+                <i class="far fa-circle-down mx-2 "></i>
+              </button>
+            </div>
+            <div className="m-2">
+              <Filter data={{ allData, setfilterItem }} />
+            </div>
+          </div>
 
           <table class="table table-hover">
             <thead class="bg-light">
@@ -114,20 +137,28 @@ export default function VocherLeger() {
               </tr>
             </thead>
             <tbody>
-              {allData.map((v) => {
+              {voucherData?.map((v) => {
                 // <VocherLegerList alldata={v} />
 
                 return (
                   <tr>
-                    <td>{moment(v.createdOn).format("llll")}</td>
-                    <td>{v.Description}</td>
-                    <td>{v.Mode}</td>
-                    <td>{v.Amount}</td>
+                    <td>{moment(v?.createdOn).format("llll")}</td>
+                    <td>{v?.Description}</td>
+                    <td>{v?.Mode}</td>
+                    <td>{v?.Amount}</td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
+        </div>
+        <div style={{ padding: "30px 0px" }}>
+          <Pagination
+            className="pagi__style"
+            count={Math.ceil(voucherData?.length / itemsPerPage)}
+            page={currentPage}
+            onChange={handleChange}
+          />
         </div>
       </div>
     </>

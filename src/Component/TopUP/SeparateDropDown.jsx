@@ -29,7 +29,7 @@ const SeparateDropDown = () => {
         onChange={handleChange}
       >
         {data?.map((elm) => (
-          <option key={elm?._id} value={elm?.Bill_Number}>
+          <option key={elm?._id} value={elm}>
             {elm?.Bill_Number}
           </option>
         ))}
