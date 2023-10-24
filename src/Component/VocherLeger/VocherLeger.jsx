@@ -22,8 +22,6 @@ export default function VocherLeger() {
   const [allData, setallData] = useState([])
 
   // new state json pagination
-
-  // new state json pagination
   const [voucherData, setVoucherData] = useState(Voucherdata);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5; // Number of items to display per page
