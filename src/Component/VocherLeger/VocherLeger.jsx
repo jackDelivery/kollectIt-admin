@@ -33,6 +33,7 @@ export default function VocherLeger() {
   }, [voucherData, currentPage]);
 
   const handleChange = (event, value) => {
+    console.log(event)
     setCurrentPage(value);
   };
 
