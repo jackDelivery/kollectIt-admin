@@ -279,7 +279,7 @@ console.log("Bill Month",billmonth,"----",dueDate);
               ) : (
                 <>00</>
               )}
-              <span class="textmuted">.00</span>
+              <span class="textmuted"></span>
             </p>
             <p class="ms-3 px-2 bg-green">+10% since last month</p>
           </div>
