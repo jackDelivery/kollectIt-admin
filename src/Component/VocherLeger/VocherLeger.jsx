@@ -6,6 +6,9 @@ import Filter from "../filter/filter";
 import { CSVLink } from "react-csv";
 import moment from "moment";
 import axios from "axios";
+import { Pagination } from "@mui/material";
+
+const itemsPerPage = 3;
 
 export default function VocherLeger() {
   const [prevBalance, setPrevBalance] = useState(0);
@@ -13,6 +16,8 @@ export default function VocherLeger() {
   const UserCredentials = useContext(StoreContext);
   const csvLinkEl = useRef(null);
   const [filterItem, setfilterItem] = useState(allData);
+  const [page, setPage] = useState(1);
+  const totalPages = Math.ceil(allData.length / itemsPerPage);
 
   const headers = [
     { label: "Date", key: "createdOn" },
@@ -60,6 +65,15 @@ export default function VocherLeger() {
     }
   }, []);
 
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
+
+  const displayedData = allData.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
+
   const downloadReport = async () => {
     setTimeout(() => {
       csvLinkEl.current.link.click();
@@ -81,27 +95,26 @@ export default function VocherLeger() {
             ref={csvLinkEl}
           />
 
-          
-<div className="d-flex flex-row-reverse m-2">
-        <div className="m-2">
-          <button
-            class="btn text-white "
-            style={{
-              background: "#427D8F",
-              fontSize: 15,
-              marginTop: "-3%",
-            }}
-            onClick={downloadReport}
-            role="button"
-          >
-            Export
-            <i class="far fa-circle-down mx-2 "></i>
-          </button>
-        </div>
-        <div className="m-2">
-          <Filter data={{ allData, setfilterItem }} />
-        </div>
-      </div>
+          <div className="d-flex flex-row-reverse m-2">
+            <div className="m-2">
+              <button
+                class="btn text-white "
+                style={{
+                  background: "#427D8F",
+                  fontSize: 15,
+                  marginTop: "-3%",
+                }}
+                onClick={downloadReport}
+                role="button"
+              >
+                Export
+                <i class="far fa-circle-down mx-2 "></i>
+              </button>
+            </div>
+            <div className="m-2">
+              <Filter data={{ allData, setfilterItem }} />
+            </div>
+          </div>
 
           <table class="table table-hover">
             <thead class="bg-light">
@@ -114,7 +127,7 @@ export default function VocherLeger() {
               </tr>
             </thead>
             <tbody>
-              {allData.map((v) => {
+              {displayedData.map((v) => {
                 // <VocherLegerList alldata={v} />
 
                 return (
@@ -129,6 +142,13 @@ export default function VocherLeger() {
             </tbody>
           </table>
         </div>
+        <Pagination
+          count={totalPages}
+          page={page}
+          onChange={handlePageChange}
+          variant="outlined"
+          shape="rounded"
+        />
       </div>
     </>
   );

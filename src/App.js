@@ -14,15 +14,10 @@ import {
   extendBaseTheme,
   RadioButtonGroup,
   Text,
+  Button
 } from "@chakra-ui/react";
 
-const { Button } = chakraTheme.components;
-
-const theme = extendBaseTheme({
-  components: {
-    Button,
-  },
-});
+// const { Button } = chakraTheme.components;
 
 
 
